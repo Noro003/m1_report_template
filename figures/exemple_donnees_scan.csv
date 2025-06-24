@@ -1,0 +1,15 @@
+% Exemple d'inclusion de données CSV
+% Ce fichier montre comment présenter des données tabulaires dans le rapport
+
+frequency_THz,current_mA,temperature_C,power_uW,lockin_x,lockin_y,remarks
+0.558,162.0,27.25,9.7,-4.228e-05,0.0004036,Point initial gamme
+0.600,159.5,26.80,8.2,-3.891e-05,0.0003892,Signal stable
+0.700,156.2,26.20,6.9,-3.445e-05,0.0003456,Bonne reproductibilité
+0.800,152.8,25.55,5.8,-2.987e-05,0.0002998,Zone optimale
+0.900,149.1,24.85,4.9,-2.534e-05,0.0002545,Signal décroissant
+1.000,145.0,24.10,4.1,-2.098e-05,0.0002109,Limite pratique
+1.100,140.5,23.30,3.4,-1.689e-05,0.0001701,Faible SNR
+1.200,135.7,22.45,2.9,-1.312e-05,0.0001324,Bruit augmente
+1.300,130.4,21.55,2.4,-9.78e-06,0.0000989,Difficile détection
+1.400,124.8,20.60,2.0,-7.89e-06,0.0000801,Seuil détection
+1.455,120.5,19.85,1.7,-6.45e-06,0.0000657,Limite haute gamme

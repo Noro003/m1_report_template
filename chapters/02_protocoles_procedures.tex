@@ -1,0 +1,280 @@
+% =============================================================================
+% CHAPITRE 2 : PROTOCOLES ET PROCÉDURES
+% =============================================================================
+
+\chapter{Protocoles et procédures}
+\label{chap:protocoles}
+
+Ce chapitre présente l'architecture technique du spectromètre THz développé, les protocoles expérimentaux mis en place, et les innovations algorithmiques apportées. Il constitue le cœur technique du rapport.
+
+\section{Principe du photomélange}
+
+\subsection{Théorie du battement optique}
+
+Le photomélange repose sur la génération d'un rayonnement THz par battement de deux lasers dans un photomélangeur. Considérons deux ondes optiques de fréquences \freq{1} et \freq{2} :
+
+\begin{align}
+E_1(t) &= A_1 \cos(2\pi f_1 t + \phi_1) \\
+E_2(t) &= A_2 \cos(2\pi f_2 t + \phi_2)
+\end{align}
+
+Le champ total incident sur le photomélangeur s'écrit :
+\begin{equation}
+E_{\text{total}}(t) = E_1(t) + E_2(t)
+\end{equation}
+
+L'intensité détectée par le photomélangeur, proportionnelle à $E_{\text{total}}^2(t)$, contient un terme de battement à la fréquence différence :
+
+\begin{beatequation}
+\freqbeat = |f_1 - f_2|
+\end{beatequation}
+
+Cette fréquence de battement, située dans le domaine THz, constitue le signal d'intérêt pour la spectroscopie.
+
+\subsection{Photomélangeur utilisé}
+
+Le photomélangeur choisi est une photodiode p-i-n InGaAs (modèle PCA-FD-1550-100-TX-1) optimisée pour la gamme \SI{1550}{\nano\meter}. Ses caractéristiques principales sont :
+\begin{itemize}
+    \item Bande passante : DC à \SI{100}{\GHz}
+    \item Responsivité : \SI{0.8}{\ampere\per\watt} à \SI{1550}{\nano\meter}
+    \item Puissance optique maximale : \SI{100}{\milli\watt}
+\end{itemize}
+
+\subsection{Modélisation de la puissance THz}
+
+La puissance THz générée suit approximativement une loi de puissance dans la gamme d'intérêt :
+
+\begin{powerequation}
+\powerTHz(\freqbeat) = P_0 \left(\frac{\freqbeat}{f_0}\right)^{-\alpha}
+\end{powerequation}
+
+où $P_0$ est la puissance de référence à $f_0 = \SI{0.5}{\THz}$ et $\alpha \approx 1.3$ l'exposant mesuré expérimentalement.
+
+\section{Architecture du système}
+
+\subsection{Vue d'ensemble}
+
+Le spectromètre THz développé s'articule autour de quatre sous-systèmes principaux :
+\begin{enumerate}
+    \item \textbf{Sources laser} : deux lasers DFB accordables
+    \item \textbf{Génération THz} : photomélangeur et optique associée
+    \item \textbf{Détection} : bolomètre et amplificateur lock-in
+    \item \textbf{Métrologie} : peigne de fréquence et réseau \REFIMEVE{}
+\end{enumerate}
+
+\begin{figure}[ht]
+    \centering
+    % Remplacez par votre schéma système
+    \includegraphics[width=0.9\textwidth]{figures/schema_systeme.pdf}
+    \caption{Schéma de principe du spectromètre THz par photomélange. Les deux lasers DFB génèrent le battement THz détecté par le bolomètre après interaction avec l'échantillon gazeux.}
+    \label{fig:schema_systeme}
+\end{figure}
+
+\subsection{Lasers DFB et contrôle}
+
+\subsubsection{Spécifications des lasers}
+
+Deux lasers DFB (Distributed Feedback) constituent les sources optiques :
+
+\textbf{Laser 1 :}
+\begin{itemize}
+    \item Gamme de fréquence : \SIrange{191.702}{192.163}{\THz}
+    \item Plage d'accordabilité : \SI{461.4}{\GHz}
+    \item Contrôleur : \Arroyo{} (\comport{4})
+\end{itemize}
+
+\textbf{Laser 2 :}
+\begin{itemize}
+    \item Gamme de fréquence : \SIrange{192.721}{193.156}{\THz}
+    \item Plage d'accordabilité : \SI{435.2}{\GHz}
+    \item Contrôleur : \Arroyo{} (\comport{3})
+\end{itemize}
+
+\subsubsection{Gamme THz résultante}
+
+La combinaison des deux lasers permet de couvrir la gamme THz :
+\begin{equation}
+\freqbeat \in [\SI{0.558}{\THz}, \SI{1.455}{\THz}]
+\end{equation}
+
+soit une plage totale de \SI{896.6}{\GHz}, proche de la limite théorique de \SI{1.5}{\THz}.
+
+\subsubsection{Contrôle thermique et en courant}
+
+Chaque laser est piloté par son contrôleur \Arroyo{} via :
+\begin{itemize}
+    \item \textbf{Courant de polarisation} : \SIrange{100}{200}{\milli\ampere}
+    \item \textbf{Température TEC} : \SIrange{15}{35}{\celsius}
+\end{itemize}
+
+La fréquence d'émission suit les relations empiriques :
+
+\begin{dfbequation}
+f(I, T) = f_0 + \alpha_I (I - I_0) + \alpha_T (T - T_0)
+\end{dfbequation}
+
+avec les coefficients d'accordabilité $\alpha_I$ et $\alpha_T$ fournis par le constructeur.
+
+\subsection{Système de détection}
+
+\subsubsection{Bolomètre}
+
+La détection THz utilise un bolomètre hélium refroidi présentant :
+\begin{itemize}
+    \item Bande passante : \SIrange{0.1}{5}{\THz}
+    \item Sensibilité : $\SI{e4}{\volt\per\watt}$ typique
+    \item Constante de temps : \SI{1}{\milli\second}
+\end{itemize}
+
+\subsubsection{Amplificateur lock-in}
+
+Le signal du bolomètre est traité par un amplificateur lock-in \SR{830} (\gpibport{7}) configuré en mode :
+\begin{itemize}
+    \item Fréquence de référence : \SI{1}{\kilo\hertz}
+    \item Constante de temps : \SI{100}{\milli\second}
+    \item Sensibilité : adaptée automatiquement
+\end{itemize}
+
+La modulation est appliquée par hachage mécanique du faisceau THz.
+
+\section{Métrologie fréquentielle}
+
+\subsection{Peigne de fréquence optique}
+
+Le système intègre un peigne de fréquence \Toptica{} \DFCcore{} pour la métrologie. Ce peigne génère un spectre régulier de modes séparés de \frep{} :
+
+\begin{equation}
+f_n = n \cdot \frep + \fceo
+\end{equation}
+
+où $n$ est l'ordre du mode et \fceo{} l'offset carrier-envelope.
+
+\subsection{Réseau REFIMEVE}
+
+Le réseau métrologique \REFIMEVE{} fournit deux signaux de référence :
+\begin{itemize}
+    \item \textbf{Signal radiofréquence} : \SI{10}{\GHz} ultra-stable
+    \item \textbf{Signal optique infrarouge} : \SI{1542}{\nano\meter}
+\end{itemize}
+
+La stabilité relative atteint $10^{-17}$ à $10^{-18}$ sur les échelles de temps pertinentes.
+
+\section{Automatisation et contrôle logiciel}
+
+\subsection{Architecture logicielle}
+
+Le système de contrôle s'articule autour de deux workflows indépendants :
+
+\begin{enumerate}
+    \item \textbf{Génération de paramètres} : calcul des points de mesure optimaux
+    \item \textbf{Exécution des scans} : automatisation des acquisitions
+\end{enumerate}
+
+\subsection{Workflow 1 : Génération de paramètres}
+
+Le module \texttt{dfb\_parameter\_calculator\_gui.py} implémente une interface graphique permettant de :
+\begin{itemize}
+    \item Définir les contraintes de puissance et température
+    \item Calculer les paramètres optimaux (courant, température)
+    \item Exporter les fichiers CSV de paramètres
+\end{itemize}
+
+\subsection{Workflow 2 : Exécution automatisée}
+
+Le module \texttt{advanced\_tec\_csv\_scanner\_fixed.py} réalise l'acquisition automatisée :
+\begin{itemize}
+    \item Lecture des paramètres CSV
+    \item Contrôle des instruments via VISA/série
+    \item Acquisition synchronisée des données
+    \item Sauvegarde automatique avec horodatage
+\end{itemize}
+
+\section{Innovation : Optimisation TEC}
+
+\subsection{Problématique identifiée}
+
+L'analyse des temps d'exécution a révélé que les commandes TEC (Temperature Electric Cooler) constituent le facteur limitant principal :
+\begin{itemize}
+    \item Temps par commande TEC : \SIrange{60}{90}{\second}
+    \item Temps par commande courant : \SI{5}{\second}
+    \item Rapport : 12 à 18 fois plus lent
+\end{itemize}
+
+\subsection{Algorithme d'optimisation développé}
+
+L'algorithme développé analyse les paramètres de scan pour éviter les commandes TEC redondantes :
+
+\begin{algorithm}[ht]
+\caption{Optimisation TEC intelligente}
+\begin{algorithmic}[1]
+\For{each scan point $i$}
+    \State $\Delta T = |T_i - T_{i-1}|$
+    \If{$\Delta T < \epsilon_T$}
+        \State Skip TEC command
+        \State Set laser current only
+    \Else
+        \State Send TEC setpoint
+        \State Wait for stabilization
+        \State Set laser current
+    \EndIf
+    \State Acquire data
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+Le seuil $\epsilon_T = \SI{0.001}{\celsius}$ a été optimisé expérimentalement.
+
+\subsection{Monitoring passif de température}
+
+Pour les points sans changement TEC, un monitoring passif vérifie la stabilité :
+
+\begin{itemize}
+    \item Période d'observation : \SI{25}{\second}
+    \item Critère de stabilité : $\sigma_T < \SI{0.02}{\celsius}$
+    \item Validation automatique de la convergence
+\end{itemize}
+
+\section{Protocoles expérimentaux}
+
+\subsection{Préparation du système}
+
+Avant chaque session de mesure :
+\begin{enumerate}
+    \item Vérification de la stabilisation thermique (\SI{30}{\minute} minimum)
+    \item Calibration des détecteurs
+    \item Optimisation des phases lock-in
+    \item Vérification de la métrologie fréquentielle
+\end{enumerate}
+
+\subsection{Procédure de scan standard}
+
+Un scan typique suit la séquence :
+\begin{enumerate}
+    \item Chargement des paramètres CSV
+    \item Configuration des instruments
+    \item Exécution du scan avec optimisation TEC
+    \item Sauvegarde automatique des données
+    \item Validation de la qualité des mesures
+\end{enumerate}
+
+\subsection{Gestion des erreurs et sécurités}
+
+Le système intègre plusieurs niveaux de sécurité :
+\begin{itemize}
+    \item Surveillance continue des températures
+    \item Limitation des puissances optiques
+    \item Détection de perte de communication
+    \item Arrêt d'urgence automatique
+\end{itemize}
+
+\section{Caractérisation du système}
+
+\subsection{Étalonnage en fréquence}
+
+L'étalonnage s'appuie sur les données constructeur des lasers DFB, validées ponctuellement par comparaison avec le peigne de fréquence. La précision attendue est de l'ordre du \SI{1}{\MHz}.
+
+\subsection{Étalonnage en puissance}
+
+Un puissancemètre \texttt{PM100D} calibré permet la caractérisation de la chaîne optique. Les mesures de puissance THz restent relatives, le bolomètre n'étant pas étalonné en valeur absolue.
+
+Cette architecture système constitue la base expérimentale pour les mesures spectroscopiques présentées au chapitre suivant.

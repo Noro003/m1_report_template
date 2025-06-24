@@ -1,0 +1,171 @@
+% =============================================================================
+% LAYOUT CONFIGURATION
+% Mise en page pour rapport M1 (30 pages max)
+% =============================================================================
+
+% -----------------------------------------------------------------------------
+% GÉOMÉTRIE DE LA PAGE
+% -----------------------------------------------------------------------------
+\geometry{
+    a4paper,
+    left=2.5cm,
+    right=2.5cm,
+    top=2.5cm,
+    bottom=2.5cm,
+    headheight=15pt,
+    headsep=20pt,
+    footskip=20pt
+}
+
+% -----------------------------------------------------------------------------
+% ESPACEMENT
+% -----------------------------------------------------------------------------
+\onehalfspacing                         % Interligne 1.5
+\setlength{\parindent}{0.5cm}          % Indentation des paragraphes
+\setlength{\parskip}{6pt plus 2pt minus 1pt}  % Espacement entre paragraphes
+
+% -----------------------------------------------------------------------------
+% EN-TÊTES ET PIEDS DE PAGE
+% -----------------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}                              % Effacer tous les en-têtes et pieds
+
+% En-tête pages paires (gauche)
+\fancyhead[LE]{\small\leftmark}
+% En-tête pages impaires (droite)  
+\fancyhead[RO]{\small\rightmark}
+% Numéro de page centré en bas
+\fancyfoot[C]{\thepage}
+
+% Style pour les premières pages de chapitre
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+}
+
+% Largeur de la ligne d'en-tête
+\renewcommand{\headrulewidth}{0.4pt}
+
+% -----------------------------------------------------------------------------
+% PERSONNALISATION DES TITRES DE CHAPITRES
+% -----------------------------------------------------------------------------
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries\color{NavyBlue}}
+{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries\color{NavyBlue}}
+{\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\normalfont\large\bfseries\color{NavyBlue}}
+{\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+{\normalfont\normalsize\bfseries\color{NavyBlue}}
+{\thesubsubsection}{1em}{}
+
+% Espacement avant et après les titres
+\titlespacing*{\chapter}{0pt}{0pt}{30pt}
+\titlespacing*{\section}{0pt}{20pt}{10pt}
+\titlespacing*{\subsection}{0pt}{15pt}{5pt}
+\titlespacing*{\subsubsection}{0pt}{10pt}{5pt}
+
+% -----------------------------------------------------------------------------
+% TABLE DES MATIÈRES
+% -----------------------------------------------------------------------------
+\setcounter{tocdepth}{3}                % Profondeur table des matières
+\setcounter{secnumdepth}{3}             % Profondeur numérotation
+
+% Style de la table des matières
+\titlecontents{chapter}
+[0pt]
+{\vspace{12pt}\bfseries}
+{\contentspush{\thecontentslabel.\quad}}
+{}
+{\titlerule*[8pt]{.}\contentspage}
+
+\titlecontents{section}
+[20pt]
+{}
+{\contentspush{\thecontentslabel.\quad}}
+{}
+{\titlerule*[8pt]{.}\contentspage}
+
+\titlecontents{subsection}
+[40pt]
+{\small}
+{\contentspush{\thecontentslabel.\quad}}
+{}
+{\titlerule*[8pt]{.}\contentspage}
+
+% -----------------------------------------------------------------------------
+% PERSONNALISATION DES LISTES
+% -----------------------------------------------------------------------------
+\setlist[itemize,1]{label=\textbullet, leftmargin=*}
+\setlist[itemize,2]{label=\textendash, leftmargin=*}
+\setlist[enumerate,1]{label=\arabic*., leftmargin=*}
+\setlist[enumerate,2]{label=\alph*), leftmargin=*}
+
+% -----------------------------------------------------------------------------
+% CONFIGURATION DES FIGURES ET TABLEAUX
+% -----------------------------------------------------------------------------
+% Style des légendes
+\captionsetup{
+    font=small,
+    labelfont=bf,
+    textfont=it,
+    margin=10pt,
+    aboveskip=5pt,
+    belowskip=5pt
+}
+
+% Légendes spécifiques aux figures
+\captionsetup[figure]{
+    name=Figure,
+    position=bottom
+}
+
+% Légendes spécifiques aux tableaux
+\captionsetup[table]{
+    name=Tableau,
+    position=top
+}
+
+% -----------------------------------------------------------------------------
+% CONFIGURATION DU CODE
+% -----------------------------------------------------------------------------
+\lstset{
+    backgroundcolor=\color{gray!10},
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    captionpos=b,
+    commentstyle=\color{OliveGreen},
+    frame=single,
+    keywordstyle=\color{NavyBlue}\bfseries,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stringstyle=\color{BrickRed},
+    tabsize=2,
+    showstringspaces=false
+}
+
+% -----------------------------------------------------------------------------
+% ENVIRONNEMENTS PERSONNALISÉS
+% -----------------------------------------------------------------------------
+
+% Environnement pour les équations importantes
+\newenvironment{importantequation}
+{\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Équation importante]}
+{\end{tcolorbox}}
+
+% Environnement pour les résultats clés
+\newenvironment{keyresult}
+{\begin{tcolorbox}[colback=green!5!white,colframe=green!75!black,title=Résultat clé]}
+{\end{tcolorbox}}
+
+% Environnement pour les remarques
+\newenvironment{remark}
+{\begin{tcolorbox}[colback=orange!5!white,colframe=orange!75!black,title=Remarque]}
+{\end{tcolorbox}}

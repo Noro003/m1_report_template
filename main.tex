@@ -1,0 +1,70 @@
+% =============================================================================
+% RAPPORT DE STAGE M1 - SPECTROSCOPIE THZ
+% Template personnalisé pour Master 1 Physique et Applications
+% Université Paris-Saclay - ISMO
+% =============================================================================
+
+\documentclass[11pt,a4paper,twoside]{report}
+
+% Configuration et packages
+\input{config/packages}
+\input{config/layout}
+\input{config/french_settings}
+\input{config/physics_settings}
+\input{config/metadata}
+
+% =============================================================================
+% DÉBUT DU DOCUMENT
+% =============================================================================
+\begin{document}
+
+% -----------------------------------------------------------------------------
+% PAGES PRÉLIMINAIRES (Pages obligatoires - 4p)
+% -----------------------------------------------------------------------------
+
+% Page de couverture
+\input{frontmatter/cover}
+
+% % Page de garde
+% \input{frontmatter/title_page}
+
+% % Sommaire 
+% \input{frontmatter/table_of_contents}
+
+% Organisation du rapport
+\input{frontmatter/organization}
+
+% -----------------------------------------------------------------------------
+% CORPS DU RAPPORT (22p)
+% -----------------------------------------------------------------------------
+
+% Numérotation arabe
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% Chapitre 1: Introduction & Contexte (4-5p)
+\input{chapters/01_introduction_contexte}
+
+% Chapitre 2: Protocoles & Procédures (8-10p)
+\input{chapters/02_protocoles_procedures}
+
+% Chapitre 3: Résultats vs Escomptés (6-8p)
+\input{chapters/03_resultats_attendus}
+
+% Chapitre 4: Analyse & Perspectives (4-5p)
+\input{chapters/04_analyse_perspectives}
+
+% Chapitre 5: Conclusion Générale (2-3p)
+\input{chapters/05_conclusion}
+
+% -----------------------------------------------------------------------------
+% PAGES FINALES (4p)
+% -----------------------------------------------------------------------------
+
+% Bibliographie (2-3p)
+\input{backmatter/bibliography}
+
+% Quatrième de couverture avec résumés FR/EN (1p)
+\input{backmatter/back_cover}
+
+\end{document}

@@ -1,0 +1,132 @@
+% =============================================================================
+% CONFIGURATION FRANÇAISE
+% Paramètres spécifiques à la typographie française
+% =============================================================================
+
+% -----------------------------------------------------------------------------
+% CONFIGURATION DE BABEL
+% -----------------------------------------------------------------------------
+\frenchbsetup{
+    StandardLayout=true,                % Mise en page standard
+    ThinColonSpace=true,               % Espace fine avant les deux-points
+    FrenchFootnotes=true,              % Notes de bas de page à la française
+    AutoSpaceFootnotes=true,           % Espacement automatique notes
+    IndentFirst=true                   % Indentation du premier paragraphe
+}
+
+% -----------------------------------------------------------------------------
+% GUILLEMETS FRANÇAIS
+% -----------------------------------------------------------------------------
+\DeclareQuoteStyle{french}
+    {\guillemotleft\space}
+    {\space\guillemotright}
+    {\textquotedblleft}
+    {\textquotedblright}
+
+\setquotestyle{french}
+
+% -----------------------------------------------------------------------------
+% NOMS FRANÇAIS POUR LES ÉLÉMENTS
+% -----------------------------------------------------------------------------
+
+% Redéfinition des noms de chapitres et sections
+\addto\captionsfrench{
+    \renewcommand{\contentsname}{Sommaire}
+    \renewcommand{\listfigurename}{Liste des figures}
+    \renewcommand{\listtablename}{Liste des tableaux}
+    \renewcommand{\bibname}{Bibliographie}
+    \renewcommand{\refname}{Références}
+    \renewcommand{\indexname}{Index}
+    \renewcommand{\figurename}{Figure}
+    \renewcommand{\tablename}{Tableau}
+    \renewcommand{\partname}{Partie}
+    \renewcommand{\chaptername}{Chapitre}
+    \renewcommand{\appendixname}{Annexe}
+    \renewcommand{\abstractname}{Résumé}
+}
+
+% -----------------------------------------------------------------------------
+% CONFIGURATION SIUNITX POUR LE FRANÇAIS
+% -----------------------------------------------------------------------------
+\sisetup{
+    locale=FR,                         % Localisation française
+    detect-weight=true,                % Détection automatique du poids de police
+    detect-family=true,                % Détection automatique de la famille de police
+    output-decimal-marker={,},         % Virgule comme séparateur décimal
+    group-separator={\,},              % Espace fine comme séparateur de milliers
+    inter-unit-product=\ensuremath{{}\cdot{}}, % Point médian entre unités
+    per-mode=symbol,                   % Mode slash pour "par"
+    bracket-numbers=false,             % Pas de parenthèses pour les nombres
+    tight-spacing=true,                % Espacement serré
+    space-before-unit=true,            % Espace avant l'unité
+    unit-font-command=\mathrm,         % Police droite pour les unités
+    number-unit-separator=\,,          % Espace fine entre nombre et unité
+    range-phrase={~à~},                % "à" pour les intervalles
+    range-units=single                 % Unité une seule fois dans un intervalle
+}
+
+% Unités personnalisées pour la spectroscopie THz
+\DeclareSIUnit\THz{\tera\hertz}
+\DeclareSIUnit\GHz{\giga\hertz}
+\DeclareSIUnit\MHz{\mega\hertz}
+\DeclareSIUnit\kHz{\kilo\hertz}
+\DeclareSIUnit\mA{\milli\ampere}
+\DeclareSIUnit\pW{\pico\watt}
+\DeclareSIUnit\nW{\nano\watt}
+\DeclareSIUnit\uW{\micro\watt}
+\DeclareSIUnit\mW{\milli\watt}
+
+% -----------------------------------------------------------------------------
+% CONFIGURATION DES RÉFÉRENCES CROISÉES
+% -----------------------------------------------------------------------------
+\crefformat{chapter}{chapitre~#2#1#3}
+\crefformat{section}{section~#2#1#3}
+\crefformat{subsection}{section~#2#1#3}
+\crefformat{figure}{figure~#2#1#3}
+\crefformat{table}{tableau~#2#1#3}
+\crefformat{equation}{équation~#2#1#3}
+
+% Versions plurielles
+\crefmultiformat{chapter}{chapitres~#2#1#3}{ et~#2#1#3}{, #2#1#3}{ et~#2#1#3}
+\crefmultiformat{section}{sections~#2#1#3}{ et~#2#1#3}{, #2#1#3}{ et~#2#1#3}
+\crefmultiformat{figure}{figures~#2#1#3}{ et~#2#1#3}{, #2#1#3}{ et~#2#1#3}
+\crefmultiformat{table}{tableaux~#2#1#3}{ et~#2#1#3}{, #2#1#3}{ et~#2#1#3}
+\crefmultiformat{equation}{équations~#2#1#3}{ et~#2#1#3}{, #2#1#3}{ et~#2#1#3}
+
+% -----------------------------------------------------------------------------
+% DATES EN FRANÇAIS
+% -----------------------------------------------------------------------------
+\newcommand{\today}{\number\day~\ifcase\month\or
+    janvier\or février\or mars\or avril\or mai\or juin\or
+    juillet\or août\or septembre\or octobre\or novembre\or décembre\fi
+    ~\number\year}
+
+% -----------------------------------------------------------------------------
+% MACROS FRANÇAISES UTILES
+% -----------------------------------------------------------------------------
+
+% Abréviations courantes
+\newcommand{\cad}{c.-à-d.~}            % c'est-à-dire
+\newcommand{\cf}{cf.~}                 % confer
+\newcommand{\etc}{etc.}                % et caetera
+\newcommand{\ie}{i.e.~}                % id est
+\newcommand{\eg}{e.g.~}                % exempli gratia
+\newcommand{\vs}{vs~}                  % versus
+
+% Espaces typographiques françaises
+\newcommand{\espacesfines}{\,}         % Espace fine
+\newcommand{\espacessecables}{~}       % Espace sécable
+\newcommand{\espacesinsecables}{\nobreak\,} % Espace insécable fine
+
+% -----------------------------------------------------------------------------
+% CORRECTION ORTHOGRAPHIQUE
+% -----------------------------------------------------------------------------
+% Mots composés avec trait d'union pour éviter les coupures malheureuses
+\hyphenation{
+    long-terme
+    court-terme
+    sous-système
+    multi-fréquence
+    auto-réglage
+    co-superviseur
+}

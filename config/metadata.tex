@@ -1,0 +1,162 @@
+% =============================================================================
+% MÉTADONNÉES DU RAPPORT
+% À personnaliser selon votre stage
+% =============================================================================
+
+% -----------------------------------------------------------------------------
+% INFORMATIONS ÉTUDIANT
+% -----------------------------------------------------------------------------
+\newcommand{\studentname}{Norayr MALKHASYAN}                    % Nom de l'étudiant
+\newcommand{\studentnumber}{22109895}             % Numéro étudiant
+\newcommand{\studentemail}{norayr.malkhasyan@universite-paris-saclay.fr}            % Email étudiant
+
+% -----------------------------------------------------------------------------
+% INFORMATIONS ACADÉMIQUES
+% -----------------------------------------------------------------------------
+\newcommand{\university}{Université Paris-Saclay}          % Université
+\newcommand{\program}{Master 1 Physique et Applications}   % Formation
+\newcommand{\academicyear}{2024-2025}                      % Année universitaire
+
+% -----------------------------------------------------------------------------
+% INFORMATIONS STAGE
+% -----------------------------------------------------------------------------
+\newcommand{\internshiptitle}{%
+    Spectroscopie THz sub-Doppler par photomélange : 
+    construction et optimisation d'un système automatisé%
+}                                                           % Titre du stage
+
+\newcommand{\internshipsubtitle}{%
+    Développement d'un spectromètre THz dans la gamme 0,3-5 THz%
+}                                                           % Sous-titre
+
+\newcommand{\internshipperiod}{14 avril 2025 -- 31 juillet 2025} % Période
+\newcommand{\internshipduration}{3,5 mois}                 % Durée
+
+% -----------------------------------------------------------------------------
+% INFORMATIONS LABORATOIRE
+% -----------------------------------------------------------------------------
+\newcommand{\laboratory}{%
+    Institut des Sciences Moléculaires d'Orsay (ISMO)%
+}                                                           % Laboratoire
+
+\newcommand{\laboratoryaddress}{%
+    Université Paris-Saclay, CNRS\\
+    Bâtiment 520, 91405 Orsay Cedex, France%
+}                                                           % Adresse laboratoire
+
+\newcommand{\labdirector}{[Directeur du laboratoire]}      % Directeur labo
+
+% -----------------------------------------------------------------------------
+% ENCADREMENT
+% -----------------------------------------------------------------------------
+\newcommand{\supervisor}{Olivier PIRALI}                   % Encadrant principal
+\newcommand{\supervisortitle}{%
+    Directeur de Recherche CNRS, ISMO%
+}                                                           % Titre encadrant
+\newcommand{\supervisoremail}{olivier.pirali@cnrs.fr}      % Email encadrant
+
+\newcommand{\cosupervisor}{[Co-encadrant si applicable]}   % Co-encadrant
+\newcommand{\cosupervisortitle}{[Titre co-encadrant]}      % Titre co-encadrant
+\newcommand{\cosupervisoremail}{[email.co-encadrant@cnrs.fr]} % Email co-encadrant
+
+% -----------------------------------------------------------------------------
+% ÉQUIPE DE RECHERCHE
+% -----------------------------------------------------------------------------
+\newcommand{\researchteam}{%
+    Systèmes Moléculaires, Astrophysique et Environnement (SYSTEMAE)%
+}                                                           % Équipe de recherche
+
+\newcommand{\teamleader}{[Olivier PIRALI]}                  % Chef d'équipe
+\newcommand{\teamsize}{[41] membres}                   % Taille équipe
+
+% -----------------------------------------------------------------------------
+% INFORMATIONS PROJET
+% -----------------------------------------------------------------------------
+\newcommand{\projectcontext}{%
+    Développement de techniques spectroscopiques haute résolution 
+    pour l'étude de molécules d'intérêt astrophysique%
+}                                                           % Contexte projet
+
+\newcommand{\thzrange}{0,558 -- 1,455 THz}                % Gamme THz couverte
+\newcommand{\keyinnovation}{%
+    Optimisation TEC avec réduction de 84,7\% des commandes redondantes%
+}                                                           % Innovation clé
+
+% -----------------------------------------------------------------------------
+% OBJECTIFS PRINCIPAUX
+% -----------------------------------------------------------------------------
+\newcommand{\objectiveone}{%
+    Construction d'un spectromètre THz dans la gamme 0,3-5 THz%
+}
+\newcommand{\objectivetwo}{%
+    Intégration du réseau REFIMEVE et du peigne de fréquence optique%
+}
+\newcommand{\objectivethree}{%
+    Automatisation complète du système de mesure%
+}
+\newcommand{\objectivefour}{%
+    Développement d'algorithmes d'optimisation%
+}
+\newcommand{\objectivefive}{%
+    Caractérisation et diagnostic des performances%
+}
+
+% -----------------------------------------------------------------------------
+% RÉSULTATS PRINCIPAUX
+% -----------------------------------------------------------------------------
+\newcommand{\mainresultone}{%
+    Système spectromètre THz opérationnel sur 896 GHz%
+}
+\newcommand{\mainresulttwo}{%
+    Algorithme d'optimisation TEC économisant 33\% du temps de scan%
+}
+\newcommand{\mainresultthree}{%
+    Identification de la rétroaction optique comme limitation principale%
+}
+
+% -----------------------------------------------------------------------------
+% MOTS-CLÉS
+% -----------------------------------------------------------------------------
+\newcommand{\keywordsfr}{%
+    spectroscopie THz, photomélange, lasers DFB, 
+    automatisation, optimisation TEC, ISMO%
+}                                                           % Mots-clés français
+
+\newcommand{\keywordsen}{%
+    THz spectroscopy, photomixing, DFB lasers, 
+    automation, TEC optimization, ISMO%
+}                                                           % Mots-clés anglais
+
+% -----------------------------------------------------------------------------
+% RÉSUMÉS
+% -----------------------------------------------------------------------------
+\newcommand{\resumefr}{%
+    Ce rapport présente le développement d'un spectromètre THz sub-Doppler 
+    par photomélange couvrant la gamme 0,558-1,455 THz. Le système, basé sur 
+    le battement de deux lasers DFB, intègre le réseau REFIMEVE pour la 
+    métrologie fréquentielle et un algorithme de mesure. Les principales réalisations incluent la 
+    construction d'un système automatisé fonctionnel, l'identification de 
+    la rétroaction optique comme limitation critique, et le développement 
+    d'innovations algorithmiques transférables à d'autres systèmes.%
+}
+
+\newcommand{\resumeen}{%
+    This report presents the development of a sub-Doppler THz spectrometer 
+    using photomixing covering the 0.558-1.455 THz range. The system, based 
+    on the beating of two DFB lasers, integrates the REFIMEVE network for 
+    frequency metrology and a TEC optimization algorithm reducing scan time 
+    by 33\%. Main achievements include building a functional automated system, 
+    identifying optical feedback as a critical limitation, and developing 
+    algorithmic innovations transferable to other systems.%
+}
+
+% -----------------------------------------------------------------------------
+% INFORMATIONS DE COMPILATION
+% -----------------------------------------------------------------------------
+\newcommand{\compiledate}{\today}                          % Date de compilation
+\newcommand{\reportversion}{1.0}                           % Version du rapport
+
+% -----------------------------------------------------------------------------
+% CONFIGURATION BIBLIOGRAPHIE
+% -----------------------------------------------------------------------------
+\addbibresource{backmatter/bibliography.bib}               % Fichier bibliographie

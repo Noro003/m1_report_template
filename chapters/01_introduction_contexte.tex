@@ -1,0 +1,113 @@
+% =============================================================================
+% CHAPITRE 1 : INTRODUCTION ET CONTEXTE
+% =============================================================================
+
+\chapter{Introduction et contexte}
+\label{chap:introduction}
+
+% Note pour l'étudiant : Remplacez les sections \lipsum par votre contenu réel
+
+\section{Présentation de l'Institut des Sciences Moléculaires d'Orsay}
+
+L'Institut des Sciences Moléculaires d'Orsay (ISMO) est une unité mixte de recherche (UMR 8214) du CNRS et de l'Université Paris-Saclay. Créé en 2009 par la fusion de plusieurs laboratoires, l'ISMO rassemble aujourd'hui plus de 200 personnes réparties en équipes pluridisciplinaires couvrant un large spectre de la physique et de la chimie moléculaires.
+
+\subsection{Mission et objectifs scientifiques}
+
+L'ISMO a pour mission l'étude des systèmes moléculaires, de l'échelle quantique aux systèmes complexes. Les recherches s'articulent autour de trois axes principaux :
+\begin{itemize}
+    \item \textbf{Structure et dynamique moléculaire} : spectroscopie haute résolution, dynamique réactionnelle
+    \item \textbf{Systèmes moléculaires complexes} : agrégats, interfaces, milieux biologiques
+    \item \textbf{Applications} : astrophysique, atmosphère, énergie
+\end{itemize}
+
+\subsection{Équipe d'accueil : Structure et Dynamique des Édifices Moléculaires}
+
+Le stage s'est déroulé au sein de l'équipe \researchteam, dirigée par \teamleader et comptant \teamsize. Cette équipe se spécialise dans le développement de techniques spectroscopiques avancées pour l'étude de molécules d'intérêt fondamental et appliqué.
+
+Les compétences de l'équipe couvrent :
+\begin{itemize}
+    \item Spectroscopie rotationnelle haute résolution
+    \item Métrologie fréquentielle
+    \item Développement instrumental
+    \item Modélisation théorique des spectres moléculaires
+\end{itemize}
+
+\section{Contexte scientifique de la spectroscopie THz}
+
+\subsection{Le domaine térahertz : défis et opportunités}
+
+Le domaine térahertz (\SIrange{0.1}{10}{\THz}, \SIrange{30}{3000}{\per\centi\meter}) occupe une position unique dans le spectre électromagnétique, à la frontière entre l'électronique et l'optique. Cette région spectrale présente un intérêt considérable pour de nombreuses applications scientifiques et technologiques.
+
+\subsubsection{Applications en astrophysique}
+
+La spectroscopie THz joue un rôle crucial en radioastronomie. De nombreuses transitions rotationnelles de molécules simples et complexes observées dans le milieu interstellaire se situent dans cette gamme de fréquences. Les observations par les télescopes spatiaux (Herschel, ALMA) ont révélé la richesse chimique du cosmos, mais nécessitent des données de laboratoire précises pour l'identification et la quantification des espèces détectées.
+
+\subsubsection{Physique fondamentale}
+
+La spectroscopie THz haute résolution permet l'étude de phénomènes fondamentaux :
+\begin{itemize}
+    \item Variation temporelle des constantes physiques
+    \item Tests de symétries fondamentales
+    \item Métrologie de fréquence
+\end{itemize}
+
+\subsection{Défis techniques spécifiques à la gamme > 1,5 THz}
+
+\subsubsection{Limitations des sources électroniques}
+
+Les chaînes électroniques conventionnelles atteignent leurs limites vers \SI{1.5}{\THz}. Au-delà de cette fréquence, les solutions traditionnelles deviennent complexes et coûteuses :
+\begin{itemize}
+    \item Multiplicateurs de fréquence à rendement décroissant
+    \item Sources basées sur les accélérateurs de particules
+    \item Lasers à cascade quantique encore en développement
+\end{itemize}
+
+\subsubsection{Le photomélange comme solution}
+
+Le photomélange (\photomix) représente une approche alternative prometteuse. Cette technique consiste à générer un rayonnement THz par battement de deux lasers proches infrarouges dans un photomélangeur. Les avantages incluent :
+\begin{itemize}
+    \item Accordabilité continue sur de larges gammes
+    \item Résolution spectrale limitée par les lasers sources
+    \item Compatibilité avec la métrologie optique
+\end{itemize}
+
+\section{Objectifs du stage}
+
+\subsection{Objectif principal}
+
+L'objectif principal de ce stage est le développement d'un spectromètre THz sub-Doppler par photomélange couvrant la gamme \thzrange. Ce système doit intégrer les dernières avancées en métrologie fréquentielle et automatisation pour atteindre les performances requises par les applications visées.
+
+\subsection{Objectifs spécifiques}
+
+\begin{enumerate}
+    \item \textbf{\objectiveone} \\
+    Concevoir et assembler un système spectroscopique basé sur le battement de lasers DFB, capable de couvrir la gamme de fréquences THz ciblée avec la résolution requise.
+
+    \item \textbf{\objectivetwo} \\
+    Intégrer le système dans l'infrastructure métrologique de l'ISMO, notamment le réseau \REFIMEVE{} et le peigne de fréquence \DFCcore{} pour assurer la traçabilité métrologique.
+
+    \item \textbf{\objectivethree} \\
+    Développer les logiciels de contrôle et d'acquisition permettant une utilisation autonome du système par les utilisateurs finaux.
+
+    \item \textbf{\objectivefour} \\
+    Concevoir et implémenter des algorithmes d'optimisation des performances, notamment pour le contrôle thermique des lasers.
+
+    \item \textbf{\objectivefive} \\
+    Évaluer les performances du système par des mesures spectroscopiques de référence et identifier les limitations pour les développements futurs.
+\end{enumerate}
+
+\subsection{Enjeux techniques}
+
+Les principaux défis techniques à relever incluent :
+\begin{itemize}
+    \item \textbf{Stabilité fréquentielle} : maintenir la cohérence spectrale sur de longues durées
+    \item \textbf{Optimisation de puissance} : maximiser le signal THz généré
+    \item \textbf{Contrôle thermique} : gérer la dérive des lasers avec la température
+    \item \textbf{Métrologie} : assurer la traçabilité et la précision des mesures de fréquence
+\end{itemize}
+
+\section{Plan du rapport}
+
+Ce rapport retrace chronologiquement le développement du spectromètre, depuis la conception théorique jusqu'aux premiers résultats expérimentaux. Chaque chapitre développe un aspect spécifique du projet, en mettant l'accent sur les innovations apportées et les enseignements tirés.
+
+Le \cref{chap:protocoles} détaille l'architecture système et les protocoles expérimentaux développés. Le \cref{chap:resultats} présente les performances obtenues et les compare aux spécifications. Le \cref{chap:analyse} replace les résultats dans leur contexte scientifique et prospectif. Enfin, le \cref{chap:conclusion} synthétise les acquis du stage et leurs implications pour la suite du projet.

@@ -1,0 +1,159 @@
+% =============================================================================
+% CONFIGURATION PHYSIQUE
+% Paramètres spécifiques à la physique et spectroscopie THz
+% =============================================================================
+
+% -----------------------------------------------------------------------------
+% CONFIGURATION DU PACKAGE PHYSICS
+% -----------------------------------------------------------------------------
+% Le package physics est déjà chargé dans packages.tex
+
+% Redéfinition de certaines commandes pour éviter les conflits
+\renewcommand{\div}{\nabla\cdot}       % Divergence
+\renewcommand{\curl}{\nabla\times}     % Rotationnel
+\renewcommand{\grad}{\nabla}           % Gradient
+
+% -----------------------------------------------------------------------------
+% MACROS POUR LA SPECTROSCOPIE THZ
+% -----------------------------------------------------------------------------
+
+% Fréquences et longueurs d'onde
+\newcommand{\freq}[1]{\ensuremath{f_{#1}}}                    % Fréquence
+\newcommand{\freqbeat}{\ensuremath{f_{\text{beat}}}}          % Fréquence de battement
+\newcommand{\freqTHz}{\ensuremath{f_{\text{THz}}}}            % Fréquence THz
+\newcommand{\freqref}{\ensuremath{f_{\text{ref}}}}            % Fréquence de référence
+\newcommand{\wavelength}[1]{\ensuremath{\lambda_{#1}}}        % Longueur d'onde
+
+% Lasers DFB
+\newcommand{\laserI}{\ensuremath{\text{Laser}_1}}             % Laser 1
+\newcommand{\laserII}{\ensuremath{\text{Laser}_2}}            % Laser 2
+\newcommand{\currentI}{\ensuremath{I_1}}                      % Courant laser 1
+\newcommand{\currentII}{\ensuremath{I_2}}                     % Courant laser 2
+\newcommand{\tempI}{\ensuremath{T_1}}                         % Température laser 1
+\newcommand{\tempII}{\ensuremath{T_2}}                        % Température laser 2
+
+% Puissances
+\newcommand{\power}[1]{\ensuremath{P_{#1}}}                   % Puissance générale
+\newcommand{\powerTHz}{\ensuremath{P_{\text{THz}}}}           % Puissance THz
+\newcommand{\poweropt}{\ensuremath{P_{\text{opt}}}}           % Puissance optique
+\newcommand{\powermeas}{\ensuremath{P_{\text{mes}}}}          % Puissance mesurée
+
+% Contrôleur TEC (Temperature Electric Cooler)
+\newcommand{\TEC}{\text{TEC}}                                 % TEC
+\newcommand{\TECopt}{\text{TEC}_{\text{opt}}}                % TEC optimisé
+\newcommand{\Tset}{\ensuremath{T_{\text{set}}}}              % Température de consigne
+\newcommand{\Tmes}{\ensuremath{T_{\text{mes}}}}              % Température mesurée
+
+% Photomélange
+\newcommand{\photomix}{\text{photomélange}}                   % Photomélange
+\newcommand{\beatfreq}{\ensuremath{\Delta f}}                 % Fréquence de battement
+
+% -----------------------------------------------------------------------------
+% MACROS POUR LES MESURES ET ERREURS
+% -----------------------------------------------------------------------------
+
+% Incertitudes
+\newcommand{\uncertainty}[2]{\ensuremath{#1 \pm #2}}         % Valeur ± incertitude
+\newcommand{\reluncertainty}[1]{\ensuremath{\pm #1\,\%}}     % Incertitude relative en %
+
+% Statistiques
+\newcommand{\mean}[1]{\ensuremath{\langle #1 \rangle}}       % Moyenne
+\newcommand{\std}[1]{\ensuremath{\sigma_{#1}}}               % Écart-type
+\newcommand{\var}[1]{\ensuremath{\sigma^2_{#1}}}             % Variance
+
+% Rapports signal/bruit
+\newcommand{\SNR}{\ensuremath{\text{SNR}}}                   % Signal-to-Noise Ratio
+\newcommand{\RSB}{\ensuremath{\text{RSB}}}                   % Rapport Signal/Bruit
+
+% -----------------------------------------------------------------------------
+% MACROS POUR LES INSTRUMENTS
+% -----------------------------------------------------------------------------
+
+% Amplificateur lock-in
+\newcommand{\lockin}{\text{lock-in}}                         % Lock-in
+\newcommand{\Xsignal}{\ensuremath{X}}                        % Signal X
+\newcommand{\Ysignal}{\ensuremath{Y}}                        % Signal Y
+\newcommand{\Rsignal}{\ensuremath{R}}                        % Signal R (magnitude)
+\newcommand{\phase}{\ensuremath{\phi}}                       % Phase
+
+% Bolomètre
+\newcommand{\bolometer}{\text{bolomètre}}                    % Bolomètre
+\newcommand{\responsivity}{\ensuremath{\mathcal{R}}}         % Responsivité
+
+% Peigne de fréquence
+\newcommand{\comb}{\text{peigne}}                            % Peigne de fréquence
+\newcommand{\frep}{\ensuremath{f_{\text{rep}}}}             % Fréquence de répétition
+\newcommand{\fceo}{\ensuremath{f_{\text{ceo}}}}             % Carrier-envelope offset
+
+% -----------------------------------------------------------------------------
+% MACROS POUR LES MOLÉCULES
+% -----------------------------------------------------------------------------
+
+% Formules chimiques courantes en spectroscopie
+\newcommand{\HdO}{\ce{H2O}}                                  % Eau
+\newcommand{\NHtrois}{\ce{NH3}}                              % Ammoniac  
+\newcommand{\CHtroisOH}{\ce{CH3OH}}                          % Méthanol
+\newcommand{\NHdeux}{\ce{NH2}}                               % Radical NH2
+\newcommand{\HtroisOplus}{\ce{H3O+}}                         % Ion hydronium
+
+% Transitions moléculaires
+\newcommand{\transition}[2]{\ensuremath{#1 \rightarrow #2}}  % Transition J'←J
+\newcommand{\rotlevel}[1]{\ensuremath{J = #1}}              % Niveau rotationnel
+
+% -----------------------------------------------------------------------------
+% CONSTANTES PHYSIQUES UTILES
+% -----------------------------------------------------------------------------
+
+% Constantes fondamentales
+\newcommand{\lightspeed}{\ensuremath{c}}                     % Vitesse de la lumière
+\newcommand{\planck}{\ensuremath{h}}                         % Constante de Planck
+\newcommand{\hbar}{\ensuremath{\hbar}}                       % Constante de Planck réduite
+\newcommand{\boltzmann}{\ensuremath{k_B}}                    % Constante de Boltzmann
+
+% Constantes typiques THz
+\newcommand{\freqDoppler}{\ensuremath{\Delta f_{\text{D}}}}  % Largeur Doppler
+\newcommand{\freqnat}{\ensuremath{\Gamma}}                   % Largeur naturelle
+
+% -----------------------------------------------------------------------------
+% ENVIRONNEMENTS POUR ÉQUATIONS IMPORTANTES
+% -----------------------------------------------------------------------------
+
+% Équation de battement
+\newenvironment{beatequation}
+{\begin{equation}\tag{Battement}}
+{\end{equation}}
+
+% Équation de puissance
+\newenvironment{powerequation}
+{\begin{equation}\tag{Puissance}}
+{\end{equation}}
+
+% Équation de fréquence DFB
+\newenvironment{dfbequation}
+{\begin{equation}\tag{DFB}}
+{\end{equation}}
+
+% -----------------------------------------------------------------------------
+% MACROS POUR LES RÉFÉRENCES À DES ÉQUIPEMENTS SPÉCIFIQUES
+% -----------------------------------------------------------------------------
+
+% Équipements ISMO
+\newcommand{\ISMO}{\text{ISMO}}                              % Institut des Sciences Moléculaires d'Orsay
+\newcommand{\REFIMEVE}{\text{REFIMEVE}}                      % Réseau REFIMEVE
+\newcommand{\Toptica}{\text{Toptica}}                        % Constructeur Toptica
+\newcommand{\Arroyo}{\text{Arroyo}}                          % Contrôleur Arroyo
+
+% Modèles d'instruments
+\newcommand{\SR}[1]{\text{SR830}}                           % Stanford Research SR830
+\newcommand{\DFCcore}{\text{DFC CORE+}}                     % Toptica DFC CORE+
+
+% -----------------------------------------------------------------------------
+% FORMATAGE DES DONNÉES TECHNIQUES
+% -----------------------------------------------------------------------------
+
+% Ports de communication
+\newcommand{\comport}[1]{\texttt{COM#1}}                    % Port COM
+\newcommand{\gpibport}[1]{\texttt{GPIB0::#1::INSTR}}       % Port GPIB
+
+% Paramètres de scan
+\newcommand{\scanparam}[2]{\texttt{#1 = #2}}               % Paramètre = valeur

@@ -1,0 +1,84 @@
+% Exemple de figure TikZ - Schéma système THz
+% À utiliser dans vos chapitres avec \input{figures/schema_systeme_exemple.tex}
+
+\begin{tikzpicture}[
+    % Styles des éléments
+    laser/.style={rectangle, fill=red!20, draw=red!50, thick, minimum width=1.5cm, minimum height=0.8cm},
+    device/.style={rectangle, fill=blue!20, draw=blue!50, thick, minimum width=1.2cm, minimum height=0.8cm},
+    detector/.style={circle, fill=green!20, draw=green!50, thick, minimum size=1cm},
+    beam/.style={->, thick, red},
+    signal/.style={->, thick, blue, dashed}
+]
+
+% Lasers DFB
+\node[laser] (laser1) at (0,2) {Laser 1\\DFB};
+\node[laser] (laser2) at (0,0) {Laser 2\\DFB};
+
+% Annotations fréquences
+\node[above=0.2cm of laser1, font=\small] {$f_1 = \SI{192.0}{\THz}$};
+\node[below=0.2cm of laser2, font=\small] {$f_2 = \SI{192.6}{\THz}$};
+
+% Combineur optique
+\node[device] (combiner) at (3,1) {Combineur};
+
+% Photomélangeur
+\node[device] (photomixer) at (6,1) {Photo-\\mélangeur};
+
+% Source THz
+\node[above=0.3cm of photomixer, font=\small, color=red] {$f_{THz} = |f_1 - f_2|$};
+\node[above=0.6cm of photomixer, font=\small, color=red] {$= \SI{0.6}{\THz}$};
+
+% Échantillon
+\node[device] (sample) at (9,1) {Échantillon\\gazeux};
+
+% Détecteur
+\node[detector] (detector) at (12,1) {Bolomètre};
+
+% Lock-in amplifier
+\node[device] (lockin) at (12,-1.5) {Lock-in\\SR830};
+
+% Faisceaux optiques
+\draw[beam] (laser1.east) -- (combiner.north west);
+\draw[beam] (laser2.east) -- (combiner.south west);
+\draw[beam] (combiner.east) -- (photomixer.west);
+
+% Faisceau THz
+\draw[beam, orange, very thick] (photomixer.east) -- (sample.west);
+\draw[beam, orange, very thick] (sample.east) -- (detector.west);
+
+% Signaux électriques
+\draw[signal] (detector.south) -- (lockin.north);
+
+% Contrôleurs TEC
+\node[device, fill=yellow!20, draw=yellow!50] (tec1) at (0,3.5) {TEC\\Controller};
+\node[device, fill=yellow!20, draw=yellow!50] (tec2) at (0,-1.5) {TEC\\Controller};
+
+\draw[signal] (tec1.south) -- (laser1.north);
+\draw[signal] (tec2.north) -- (laser2.south);
+
+% Annotations de contrôle
+\node[left=0.5cm of tec1, font=\tiny] {$I_1, T_1$};
+\node[left=0.5cm of tec2, font=\tiny] {$I_2, T_2$};
+
+% Métrologie (peigne de fréquence)
+\node[device, fill=purple!20, draw=purple!50] (comb) at (3,3) {Peigne\\fréquence};
+\draw[signal, purple] (comb.south west) -- (laser1.north east);
+
+% REFIMEVE
+\node[device, fill=cyan!20, draw=cyan!50] (refimeve) at (6,3) {REFIMEVE};
+\draw[signal, cyan] (refimeve.west) -- (comb.east);
+
+% Système d'acquisition
+\node[device, fill=gray!20, draw=gray!50] (computer) at (9,-1.5) {PC\\Contrôle};
+\draw[signal] (lockin.west) -- (computer.east);
+\draw[signal] (computer.north) -- (sample.south);
+
+% Légendes
+\begin{scope}[shift={(14,2)}]
+    \node[font=\scriptsize] at (0,0.5) {\textbf{Légende:}};
+    \draw[beam] (0,0) -- (0.5,0) node[right, font=\scriptsize] {Faisceau optique};
+    \draw[beam, orange, very thick] (0,-0.3) -- (0.5,-0.3) node[right, font=\scriptsize] {Faisceau THz};
+    \draw[signal] (0,-0.6) -- (0.5,-0.6) node[right, font=\scriptsize] {Signal électrique};
+\end{scope}
+
+\end{tikzpicture}

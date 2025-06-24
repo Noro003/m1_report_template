@@ -1,0 +1,118 @@
+% =============================================================================
+% PACKAGES CONFIGURATION
+% Packages essentiels pour rapport de physique M1
+% =============================================================================
+
+% -----------------------------------------------------------------------------
+% ENCODAGE ET LANGUE
+% -----------------------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{csquotes}
+
+% -----------------------------------------------------------------------------
+% TYPOGRAPHIE ET POLICES
+% -----------------------------------------------------------------------------
+\usepackage{lmodern}                    % Police Latin Modern
+\usepackage{microtype}                  % Amélioration de la typographie
+\usepackage{setspace}                   % Espacement des lignes
+
+% -----------------------------------------------------------------------------
+% MATHÉMATIQUES ET PHYSIQUE
+% -----------------------------------------------------------------------------
+\usepackage{amsmath}                    % Équations mathématiques avancées
+\usepackage{amssymb}                    % Symboles mathématiques
+\usepackage{amsfonts}                   % Polices mathématiques
+\usepackage{mathtools}                  % Outils mathématiques étendus
+\usepackage{siunitx}                    % Unités SI et notation scientifique
+\usepackage{physics}                    % Notation physique (dérivées, etc.)
+\usepackage{tensor}                     % Notation tensorielle
+\usepackage{braket}                     % Notation de Dirac
+
+% -----------------------------------------------------------------------------
+% GRAPHIQUES ET FIGURES
+% -----------------------------------------------------------------------------
+\usepackage{graphicx}                   % Inclusion d'images
+\usepackage{float}                      % Positionnement des figures
+\usepackage{subcaption}                 % Sous-figures
+\usepackage{wrapfig}                    % Figures avec texte autour
+\usepackage{tikz}                       % Dessins vectoriels
+\usepackage{pgfplots}                   % Graphiques scientifiques
+\usepackage{circuitikz}                 % Schémas électriques/optiques
+
+% Configuration pgfplots
+\pgfplotsset{compat=1.18}
+
+% -----------------------------------------------------------------------------
+% TABLEAUX
+% -----------------------------------------------------------------------------
+\usepackage{array}                      % Tableaux avancés
+\usepackage{tabularx}                   % Tableaux avec largeur fixe
+\usepackage{longtable}                  % Tableaux sur plusieurs pages
+\usepackage{booktabs}                   % Tableaux professionnels
+\usepackage{multirow}                   % Cellules fusionnées verticalement
+\usepackage{multicol}                   % Colonnes multiples
+
+% -----------------------------------------------------------------------------
+% LISTES ET ÉNUMÉRATIONS
+% -----------------------------------------------------------------------------
+\usepackage{enumitem}                   % Personnalisation des listes
+
+% -----------------------------------------------------------------------------
+% CODE ET ALGORITHMES
+% -----------------------------------------------------------------------------
+\usepackage{listings}                   % Code source
+\usepackage{algorithm}                  % Algorithmes
+\usepackage{algpseudocode}             % Pseudo-code
+
+% -----------------------------------------------------------------------------
+% COULEURS
+% -----------------------------------------------------------------------------
+\usepackage[dvipsnames,table]{xcolor}  % Couleurs étendues
+
+% -----------------------------------------------------------------------------
+% RÉFÉRENCES ET LIENS
+% -----------------------------------------------------------------------------
+\usepackage[
+    colorlinks=true,
+    linkcolor=NavyBlue,
+    citecolor=OliveGreen,
+    filecolor=BrickRed,
+    urlcolor=Blue,
+    bookmarks=true,
+    bookmarksopen=true,
+    pdftitle={Rapport de Stage M1 - Spectroscopie THz},
+    pdfauthor={Étudiant M1},
+    pdfsubject={Spectroscopie THz sub-Doppler par photomélange},
+    pdfkeywords={THz, spectroscopie, photomélange, DFB, ISMO}
+]{hyperref}
+
+\usepackage{cleveref}                   % Références intelligentes
+\usepackage{url}                        % URLs
+
+% -----------------------------------------------------------------------------
+% BIBLIOGRAPHIE
+% -----------------------------------------------------------------------------
+\usepackage[
+    backend=biber,
+    style=numeric,
+    sorting=none,
+    maxbibnames=10
+]{biblatex}
+
+% -----------------------------------------------------------------------------
+% MISE EN PAGE ET HEADERS
+% -----------------------------------------------------------------------------
+\usepackage{geometry}                   % Marges et mise en page
+\usepackage{fancyhdr}                   % En-têtes et pieds de page
+\usepackage{titlesec}                   % Personnalisation des titres
+\usepackage{titletoc}                   % Personnalisation de la table des matières
+
+% -----------------------------------------------------------------------------
+% OUTILS DIVERS
+% -----------------------------------------------------------------------------
+\usepackage{lipsum}                     % Texte de remplissage (à supprimer)
+\usepackage{blindtext}                  % Texte de remplissage (à supprimer)
+\usepackage{todonotes}                  % Notes TODO
+\usepackage{comment}                    % Commentaires multilignes
