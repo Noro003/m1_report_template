@@ -6,158 +6,265 @@
 \label{chap:protocoles}
 
 Ce chapitre présente l'architecture technique du spectromètre THz développé, les protocoles expérimentaux mis en place, et les algorithmes utilisées. 
-\section{Principe du photomélange}
 
-\subsection{Théorie du battement optique}
 
-Le photomélange repose sur la génération d'un rayonnement THz par battement de deux lasers dans un photomélangeur. Considérons deux ondes optiques de fréquences \freq{1} et \freq{2} :
+% \section{Principe du photomélange}
 
-\begin{align}
-E_1(t) &= A_1 \cos(2\pi f_1 t + \phi_1) \\
-E_2(t) &= A_2 \cos(2\pi f_2 t + \phi_2)
-\end{align}
+% \subsection{Théorie du battement optique}
 
-Le champ total incident sur le photomélangeur s'écrit :
+% Le photomélange repose sur la génération d'un rayonnement THz par battement de deux lasers dans un photomélangeur. Considérons deux ondes optiques de fréquences \freq{1} et \freq{2} :
+
+% \begin{align}
+% E_1(t) &= A_1 \cos(2\pi f_1 t + \phi_1) \\
+% E_2(t) &= A_2 \cos(2\pi f_2 t + \phi_2)
+% \end{align}
+
+% Le champ total incident sur le photomélangeur s'écrit :
+% \begin{equation}
+% E_{\text{total}}(t) = E_1(t) + E_2(t)
+% \end{equation}
+
+% L'intensité détectée par le photomélangeur, proportionnelle à $E_{\text{total}}^2(t)$, contient un terme de battement à la fréquence différence :
+
+% \begin{beatequation}
+% \freqbeat = |f_1 - f_2|
+% \end{beatequation}
+
+% Cette fréquence de battement, située dans le domaine THz, constitue le signal d'intérêt pour la spectroscopie.
+
+% \subsection{Photomélangeur utilisé}
+
+% Le photomélangeur choisi est une photodiode p-i-n InGaAs (modèle PCA-FD-1550-100-TX-1) optimisée pour la gamme \SI{1550}{\nano\meter}. Ses caractéristiques principales sont :
+% \begin{itemize}
+%     \item Bande passante : DC à \SI{100}{\GHz}
+%     \item Responsivité : \SI{0.8}{\ampere\per\watt} à \SI{1550}{\nano\meter}
+%     \item Puissance optique maximale : \SI{100}{\milli\watt}
+% \end{itemize}
+
+% \subsection{Modélisation de la puissance THz}
+
+% La puissance THz générée suit approximativement une loi de puissance dans la gamme d'intérêt :
+
+% \begin{powerequation}
+% \powerTHz(\freqbeat) = P_0 \left(\frac{\freqbeat}{f_0}\right)^{-\alpha}
+% \end{powerequation}
+
+% où $P_0$ est la puissance de référence à $f_0 = \SI{0.5}{\THz}$ et $\alpha \approx 1.3$ l'exposant mesuré expérimentalement.
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{ Principe du photomélange pour la génération THz en onde continue}
+
+La génération de rayonnement térahertz (THz) en onde continue (CW) par photomélange est la technique photonique au cœur de notre spectromètre. Elle consiste à convertir un battement optique, issu de deux lasers continus, en un signal THz cohérent et accordable. Cette méthode offre des avantages décisifs pour la spectroscopie de haute précision : une résolution spectrale limitée uniquement par les lasers, une large plage de fréquences accessible, et une exactitude fréquentielle absolue grâce à la métrologie optique.
+
+\subsection{ Fondements : le battement optique}
+
+Le principe repose sur la détection du battement entre deux ondes laser de fréquences optiques proches, $\nu_1$ et $\nu_2$. Leurs champs électriques, superposés sur le photomélangeur, s'écrivent :
 \begin{equation}
-E_{\text{total}}(t) = E_1(t) + E_2(t)
+E_1(t) = E_{01} \cos(2\pi\nu_1 t + \phi_1) \quad ; \quad E_2(t) = E_{02} \cos(2\pi\nu_2 t + \phi_2)
 \end{equation}
-
-L'intensité détectée par le photomélangeur, proportionnelle à $E_{\text{total}}^2(t)$, contient un terme de battement à la fréquence différence :
-
-\begin{beatequation}
-\freqbeat = |f_1 - f_2|
-\end{beatequation}
-
-Cette fréquence de battement, située dans le domaine THz, constitue le signal d'intérêt pour la spectroscopie.
-
-\subsection{Photomélangeur utilisé}
-
-Le photomélangeur choisi est une photodiode p-i-n InGaAs (modèle PCA-FD-1550-100-TX-1) optimisée pour la gamme \SI{1550}{\nano\meter}. Ses caractéristiques principales sont :
-\begin{itemize}
-    \item Bande passante : DC à \SI{100}{\GHz}
-    \item Responsivité : \SI{0.8}{\ampere\per\watt} à \SI{1550}{\nano\meter}
-    \item Puissance optique maximale : \SI{100}{\milli\watt}
-\end{itemize}
-
-\subsection{Modélisation de la puissance THz}
-
-La puissance THz générée suit approximativement une loi de puissance dans la gamme d'intérêt :
-
-\begin{powerequation}
-\powerTHz(\freqbeat) = P_0 \left(\frac{\freqbeat}{f_0}\right)^{-\alpha}
-\end{powerequation}
-
-où $P_0$ est la puissance de référence à $f_0 = \SI{0.5}{\THz}$ et $\alpha \approx 1.3$ l'exposant mesuré expérimentalement.
-
-
-\section{Architecture du système}
-
-\subsection{Vue d'ensemble}
-
-Le spectromètre THz développé s'articule autour de quatre sous-systèmes principaux :
-\begin{enumerate}
-    \item \textbf{Sources laser} : deux lasers DFB accordables
-    \item \textbf{Génération THz} : photomélangeur et optique associée
-    \item \textbf{Détection} : bolomètre et amplificateur lock-in
-    \item \textbf{Métrologie} : peigne de fréquence et réseau \REFIMEVE{}
-\end{enumerate}
-
-\begin{figure}[ht]
-    \centering
-    % Remplacez par votre schéma système
-    \includegraphics[width=0.9\textwidth]{figures/schema_systeme.pdf}
-    \caption{Schéma de principe du spectromètre THz par photomélange. Les deux lasers DFB génèrent le battement THz détecté par le bolomètre après interaction avec l'échantillon gazeux.}
-    \label{fig:schema_systeme}
-\end{figure}
-
-\subsection{Lasers DFB et contrôle}
-
-\subsubsection{Spécifications des lasers}
-
-Deux lasers DFB (Distributed Feedback) constituent les sources optiques :
-
-\textbf{Laser 1 :}
-\begin{itemize}
-    \item Gamme de fréquence : \SIrange{191.702}{192.163}{\THz}
-    \item Plage d'accordabilité : \SI{461.4}{\GHz}
-    \item Contrôleur : \Arroyo{} (\comport{4})
-\end{itemize}
-
-\textbf{Laser 2 :}
-\begin{itemize}
-    \item Gamme de fréquence : \SIrange{192.721}{193.156}{\THz}
-    \item Plage d'accordabilité : \SI{435.2}{\GHz}
-    \item Contrôleur : \Arroyo{} (\comport{3})
-\end{itemize}
-
-\subsubsection{Gamme THz résultante}
-
-La combinaison des deux lasers permet de couvrir la gamme THz :
+Le photomélangeur, une photodiode ultrarapide, génère un photocourant $i(t)$ proportionnel à la puissance optique totale qu'il reçoit, $P_{opt}(t) \propto (E_1 + E_2)^2$. En raison de son inertie, le détecteur ne répond qu'à l'enveloppe du signal lumineux. Le développement du carré du champ fait apparaître un terme oscillant à la fréquence de différence $\nu_{THz} = |\nu_1 - \nu_2|$. Le photocourant résultant a deux composantes :
 \begin{equation}
-\freqbeat \in [\SI{0.558}{\THz}, \SI{1.455}{\THz}]
+i(t) = \underbrace{\Re (P_1 + P_2)}_{i_{DC}} + \underbrace{2m\Re\sqrt{P_1 P_2} \cos(2\pi\nu_{THz}t + \Delta\phi)}_{i_{AC}(t)}
 \end{equation}
+où $\Re$ est la responsivité du détecteur (en A/W), $P_1$ et $P_2$ les puissances optiques des lasers, et $m$ l'efficacité du recouvrement spatial des faisceaux ($m \le 1$).
 
-soit une plage totale de \SI{896.6}{\GHz}, proche de la limite théorique de \SI{1.5}{\THz}.
+Le courant alternatif, $i_{AC}(t)$, est la source du rayonnement THz. Le courant continu, $i_{DC}$, bien que non rayonnant, est une limitation critique. Il provoque un échauffement Joule ($P_{heat} \approx V_{bias} \times i_{DC}$) qui contraint la puissance optique maximale que peut supporter le composant.
 
-\subsubsection{Contrôle thermique et en courant}
+\subsection {Le photomélangeur et l'émission THz}
 
-Chaque laser est piloté par son contrôleur \Arroyo{} via :
+Le photomélangeur est un composant intégré qui assure trois fonctions : la détection du battement optique, la génération du photocourant alternatif, et son rayonnement sous forme d'onde THz. Il est constitué d'une photodiode en InGaAs, choisie pour sa sensibilité à 1.55 µm, couplée à une antenne planaire (par exemple, en nœud papillon).
+
+Pour émettre efficacement le rayonnement vers l'extérieur, la puce est couplée à une lentille en silicium hyper-hémisphérique. Le silicium, d'indice de réfraction élevé (n $\approx$ 3.4), proche de celui du substrat semi-conducteur, prévient la réflexion totale interne et collimate le faisceau THz.
+
+\subsection{Efficacité et puissance du rayonnement THz}
+
+L'amplitude du photocourant $i_{AC}$ est proportionnelle à $\sqrt{P_1 P_2}$. Cependant, la conversion de ce courant en puissance THz n'est pas constante avec la fréquence. L'efficacité du photomélangeur diminue à haute fréquence à cause de deux principaux facteurs intrinsèques :
 \begin{itemize}
-    \item \textbf{Courant de polarisation} : \SIrange{100}{200}{\milli\ampere}
-    \item \textbf{Température TEC} : \SIrange{15}{35}{\celsius}
+    \item \textbf{Le temps de transit des porteurs ($\tau_{tr}$)} : Le temps fini que mettent les électrons et les trous pour traverser la photodiode.
+    \item \textbf{La constante de temps RC} : La capacité de la photodiode et l'impédance de l'antenne forment un filtre passe-bas.
 \end{itemize}
-
-La fréquence d'émission suit les relations empiriques :
-
-\begin{dfbequation}
-f(I, T) = f_0 + \alpha_I (I - I_0) + \alpha_T (T - T_0)
-\end{dfbequation}
-
-avec les coefficients d'accordabilité $\alpha_I$ et $\alpha_T$ fournis par le constructeur.
-
-\subsection{Système de détection}
-
-\subsubsection{Bolomètre}
-
-La détection THz utilise un bolomètre hélium refroidi présentant :
-\begin{itemize}
-    \item Bande passante : \SIrange{0.1}{5}{\THz}
-    \item Sensibilité : $\SI{e4}{\volt\per\watt}$ typique
-    \item Constante de temps : \SI{1}{\milli\second}
-\end{itemize}
-
-\subsubsection{Amplificateur lock-in}
-
-Le signal du bolomètre est traité par un amplificateur lock-in \SR{830} (\gpibport{7}) configuré en mode :
-\begin{itemize}
-    \item Fréquence de référence : \SI{1}{\kilo\hertz}
-    \item Constante de temps : \SI{100}{\milli\second}
-    \item Sensibilité : adaptée automatiquement
-\end{itemize}
-
-La modulation est appliquée par hachage mécanique du faisceau THz.
-
-\section{Métrologie fréquentielle}
-
-\subsection{Peigne de fréquence optique}
-
-Le système intègre un peigne de fréquence \Toptica{} \DFCcore{} pour la métrologie. Ce peigne génère un spectre régulier de modes séparés de \frep{} :
-
+Ces deux effets combinés provoquent une chute rapide de la puissance THz émise lorsque la fréquence augmente. Ce comportement ("roll-off") peut être décrit par un modèle empirique simple de type loi de puissance :
 \begin{equation}
-f_n = n \cdot \frep + \fceo
+P_{THz}(\nu_{THz}) = P_{opt}^2 \cdot C_{eff} \cdot \frac{1}{1 + (\nu_{THz}/\nu_{c})^\alpha}
+\label{eq:power_roll_off}
 \end{equation}
+où $P_{opt}$ est la puissance optique incidente, $C_{eff}$ un facteur d'efficacité de conversion, $\nu_{c}$ une fréquence de coupure effective et $\alpha$ un exposant (typiquement entre 2 et 4) qui modélise la rapidité de la chute de puissance.
 
-où $n$ est l'ordre du mode et \fceo{} l'offset carrier-envelope.
+En plus de ce "roll-off" fréquentiel, la puissance THz sature à forte puissance optique. Ce phénomène est principalement dû à \textbf{l'écrantage par charge d'espace} : une haute densité de porteurs de charge génère un champ électrique qui s'oppose au champ de polarisation, réduisant l'efficacité de la conversion.
 
-\subsection{Réseau REFIMEVE}
+% \subsection{Détection sensible par modulation de source}
 
-Le réseau métrologique \REFIMEVE{} fournit deux signaux de référence :
+% Le signal THz généré est extrêmement faible, de l'ordre du microwatt au mieux, et est facilement noyé dans le bruit thermique du détecteur (bolomètre ou cellule de Golay) et le bruit de fond ambiant. Pour extraire un signal aussi faible, une technique de détection sensible est indispensable. Nous utilisons la détection synchrone, mise en œuvre par un amplificateur à détection synchrone (lock-in).
+
+% Le principe consiste à moduler l'intensité de la source THz à une fréquence connue, $f_{mod}$, puis à filtrer le signal du détecteur de manière extrêmement sélective à cette même fréquence. Dans notre montage, la modulation est appliquée directement sur la source, c'est-à-dire le photomélangeur. Une tension de modulation (sinusoïdale ou carrée, à quelques kHz) est superposée à la tension de polarisation continue $V_{bias}$ du photomélangeur.
+% \begin{equation}
+% V_{appliquée}(t) = V_{bias} + V_{mod} \cdot \sin(2\pi f_{mod} t)
+% \end{equation}
+% La tension de polarisation influençant l'efficacité de la collecte de charge, la puissance THz émise $P_{THz}$ se retrouve modulée en amplitude à la même fréquence $f_{mod}$. Le faisceau THz est ainsi "étiqueté" ou "tagué".
+
+
+
+
+
+\subsection{Pureté spectrale et traçabilité en fréquence}
+
+La qualité spectrale du signal THz, essentielle pour notre application, est directement héritée de celle des lasers sources.
 \begin{itemize}
-    \item \textbf{Signal radiofréquence} : \SI{10}{\GHz} ultra-stable
-    \item \textbf{Signal optique infrarouge} : \SI{1542}{\nano\meter}
+    \item \textbf{Largeur de raie :} La fréquence THz étant la différence $\nu_{THz} = |\nu_1 - \nu_2|$, les bruits de fréquence des lasers s'additionnent. La largeur de raie du signal THz, $\Delta\nu_{THz}$, est donc la somme des largeurs de raie des lasers ($\Delta\nu_{THz} \approx \Delta\nu_1 + \Delta\nu_2$). Avec des lasers DFB standards (largeur $\sim$MHz), la raie THz résultante est trop large pour la spectroscopie sub-Doppler.
+
+    \item \textbf{Sensibilité à la rétroaction optique :} Comme observé lors des essais préliminaires, les lasers DFB sont extrêmement sensibles à la lumière réinjectée dans leur cavité. Cette rétroaction peut déstabiliser, voire rendre chaotique, l'émission laser, ce qui élargit considérablement la raie THz et empêche toute mesure de spectroscopie fine. L'utilisation d'isolateurs optiques est donc impérative.
+
+    \item \textbf{Traçabilité métrologique :} Pour atteindre une exactitude et une résolution de l'ordre du kHz, le spectromètre doit être asservi à une référence de fréquence absolue. Dans notre montage, les fréquences $\nu_1$ et $\nu_2$ sont mesurées et verrouillées par rapport à un peigne de fréquences optiques. Ce peigne est lui-même stabilisé grâce au signal de référence du réseau fibré national REFIMEVE. Cette chaîne de traçabilité garantit que la fréquence THz générée est connue avec une exactitude rattachée aux étalons primaires, ce qui transforme notre appareil en un véritable synthétiseur de fréquence THz.
 \end{itemize}
 
-La stabilité relative atteint $10^{-17}$ à $10^{-18}$ sur les échelles de temps pertinentes.
+
+
+
+
+% \section{Architecture du système}
+
+% \subsection{Vue d'ensemble}
+
+% Le spectromètre THz développé s'articule autour de quatre sous-systèmes principaux :
+% \begin{enumerate}
+%     \item \textbf{Sources laser} : deux lasers DFB accordables
+%     \item \textbf{Génération THz} : photomélangeur et optique associée
+%     \item \textbf{Détection} : bolomètre et amplificateur lock-in
+%     \item \textbf{Métrologie} : peigne de fréquence et réseau \REFIMEVE{}
+% \end{enumerate}
+
+% \begin{figure}[ht]
+%     \centering
+%     % Remplacez par votre schéma système
+%     \includegraphics[width=0.9\textwidth]{figures/schema_systeme.pdf}
+%     \caption{Schéma de principe du spectromètre THz par photomélange. Les deux lasers DFB génèrent le battement THz détecté par le bolomètre après interaction avec l'échantillon gazeux.}
+%     \label{fig:schema_systeme}
+% \end{figure}
+
+% \subsection{Lasers DFB et contrôle}
+
+% \subsubsection{Spécifications des lasers}
+
+% Deux lasers DFB (Distributed Feedback) constituent les sources optiques :
+
+% \textbf{Laser 1 :}
+% \begin{itemize}
+%     \item Gamme de fréquence : \SIrange{191.702}{192.163}{\THz}
+%     \item Plage d'accordabilité : \SI{461.4}{\GHz}
+%     \item Contrôleur : \Arroyo{} (\comport{4})
+% \end{itemize}
+
+% \textbf{Laser 2 :}
+% \begin{itemize}
+%     \item Gamme de fréquence : \SIrange{192.721}{193.156}{\THz}
+%     \item Plage d'accordabilité : \SI{435.2}{\GHz}
+%     \item Contrôleur : \Arroyo{} (\comport{3})
+% \end{itemize}
+
+% \subsubsection{Gamme THz résultante}
+
+% La combinaison des deux lasers permet de couvrir la gamme THz :
+% \begin{equation}
+% \freqbeat \in [\SI{0.558}{\THz}, \SI{1.455}{\THz}]
+% \end{equation}
+
+% soit une plage totale de \SI{896.6}{\GHz}, proche de la limite théorique de \SI{1.5}{\THz}.
+
+% \subsubsection{Contrôle thermique et en courant}
+
+% Chaque laser est piloté par son contrôleur \Arroyo{} via :
+% \begin{itemize}
+%     \item \textbf{Courant de polarisation} : \SIrange{100}{200}{\milli\ampere}
+%     \item \textbf{Température TEC} : \SIrange{15}{35}{\celsius}
+% \end{itemize}
+
+% La fréquence d'émission suit les relations empiriques :
+
+% \begin{dfbequation}
+% f(I, T) = f_0 + \alpha_I (I - I_0) + \alpha_T (T - T_0)
+% \end{dfbequation}
+
+% avec les coefficients d'accordabilité $\alpha_I$ et $\alpha_T$ fournis par le constructeur.
+
+% \subsection{Système de détection}
+
+% \subsubsection{Bolomètre}
+
+% La détection THz utilise un bolomètre hélium refroidi présentant :
+% \begin{itemize}
+%     \item Bande passante : \SIrange{0.1}{5}{\THz}
+%     \item Sensibilité : $\SI{e4}{\volt\per\watt}$ typique
+%     \item Constante de temps : \SI{1}{\milli\second}
+% \end{itemize}
+
+% \subsubsection{Amplificateur lock-in}
+
+% Le signal du bolomètre est traité par un amplificateur lock-in \SR{830} (\gpibport{7}) configuré en mode :
+% \begin{itemize}
+%     \item Fréquence de référence : \SI{1}{\kilo\hertz}
+%     \item Constante de temps : \SI{100}{\milli\second}
+%     \item Sensibilité : adaptée automatiquement
+% \end{itemize}
+
+% La modulation est appliquée par hachage mécanique du faisceau THz.
+
+
+
+% \section{Métrologie fréquentielle}
+
+% \subsection{Peigne de fréquence optique}
+
+% Le système intègre un peigne de fréquence \Toptica{} \DFCcore{} pour la métrologie. Ce peigne génère un spectre régulier de modes séparés de \frep{} :
+
+% \begin{equation}
+% f_n = n \cdot \frep + \fceo
+% \end{equation}
+
+% où $n$ est l'ordre du mode et \fceo{} l'offset carrier-envelope.
+
+% \subsection{Réseau REFIMEVE}
+
+% Le réseau métrologique \REFIMEVE{} fournit deux signaux de référence :
+% \begin{itemize}
+%     \item \textbf{Signal radiofréquence} : \SI{10}{\GHz} ultra-stable
+%     \item \textbf{Signal optique infrarouge} : \SI{1542}{\nano\meter}
+% \end{itemize}
+
+% La stabilité relative atteint $10^{-17}$ à $10^{-18}$ sur les échelles de temps pertinentes.
+
+
+\section{Architecture fonctionnelle du spectromètre}
+\label{sec:architecture}
+
+Le spectromètre est conçu comme un système modulaire où chaque bloc remplit une fonction précise. L'objectif est de générer une onde Térahertz (THz) dont la fréquence n'est pas seulement accordable, mais connue avec une \textit{exactitude} absolue et maintenue avec une grande \textit{stabilité}. On distingue trois blocs fonctionnels principaux : la source THz et son contrôle, la chaîne de détection, et la chaîne de métrologie fréquentielle. L'ensemble forme un synthétiseur de fréquence THz rattaché aux étalons nationaux.
+
+\subsection{La source Térahertz et son contrôle}
+Le cœur de la génération THz est le photomélange, dont le principe a été détaillé précédemment. Ce bloc se concentre sur les composants qui rendent cette génération stable et contrôlable. La source optique est constituée de deux lasers à semi-conducteur de type \textbf{DFB (Distributed Feedback Laser)} opérant dans la bande des télécommunications à 1.55 µm. Leur particularité est d'intégrer un réseau de Bragg directement dans la structure du laser, ce qui force une émission sur une seule fréquence (monomode), critère essentiel pour obtenir un battement THz pur. Les plages de fréquence de nos lasers (191,7-192,2 THz et 192,7-193,2 THz) permettent de couvrir par différence la gamme allant de 0,56 à 1,45 THz.
+
+Pour garantir la \textbf{stabilité} à court terme, chaque laser est piloté par un contrôleur de haute précision \textbf{Arroyo Instruments}. Celui-ci assure deux fonctions critiques : d'une part, un module de refroidissement thermoélectrique (TEC) maintient la température du laser stable au millikelvin près pour prévenir les dérives lentes ; d'autre part, il fournit un courant d'injection à très faible bruit, ce qui contribue à la finesse de la raie THz résultante. Un défi majeur identifié est l'extrême sensibilité des lasers DFB à la \textbf{rétroaction optique}. Toute lumière parasite retournant dans la cavité laser perturbe son fonctionnement. La solution impérative est donc l'insertion d'\textbf{isolateurs optiques} après chaque laser, qui agissent comme des "diodes pour la lumière" pour protéger les sources et garantir leur stabilité.
+
+\subsection{La chaîne de détection du signal THz}
+La puissance THz générée est très faible (de l'ordre du microwatt). Sa détection après l'interaction avec l'échantillon requiert une chaîne optimisée pour un rapport signal/bruit maximal. Le capteur principal est un \textbf{bolomètre à hélium liquide}, un détecteur thermique refroidi à 4.2 K (-269 °C) pour réduire drastiquement son bruit intrinsèque et atteindre une sensibilité capable de détecter des puissances de l'ordre du nanowatt.
+
+Même avec ce détecteur, le signal reste noyé dans le bruit. Pour l'extraire, on utilise la technique de \textbf{détection synchrone} (lock-in). Le principe consiste à moduler l'intensité de la source THz à une fréquence connue, $f_{mod}$. Dans notre montage, cette modulation est appliquée directement sur la source : une tension sinusoïdale (à quelques kHz) est superposée à la tension de polarisation continue $V_{bias}$ du photomélangeur. La puissance THz émise, dépendant de cette polarisation, se retrouve ainsi modulée en amplitude  à la fréquence $f_{mod}$. Un amplificateur \textbf{Stanford Research Systems SR830} utilise ensuite cette fréquence comme référence pour filtrer de manière sélective le signal électrique issu du bolomètre. Il rejette tout le bruit qui n'est pas à la fréquence de référence, améliorant le rapport signal/bruit de plusieurs ordres de grandeur et transformant un signal inexploitable en une mesure quantitative.
+
+
+\subsection{La chaîne de métrologie pour l'exactitude en fréquence}
+La stabilisation garantit que la fréquence est stable, mais pas qu'elle est connue. Pour transformer le spectromètre en un instrument de métrologie, les fréquences optiques $\nu_1$ et $\nu_2$ doivent être mesurées avec une \textit{exactitude} absolue. Cette tâche est assurée par un peigne de fréquences optiques, lui-même rattaché à l'étalon national.
+
+Nous utilisons un \textbf{peigne de fréquences Toptica DFC CORE+}. Cet instrument produit un spectre de milliers de raies spectrales équidistantes, agissant comme une \textbf{règle graduée pour les fréquences lumineuses}. La fréquence absolue d'un laser DFB est déterminée en mesurant son battement par rapport à la dent du peigne la plus proche. Pour que cette "règle" soit elle-même juste, elle est calibrée en permanence par le réseau fibré \textbf{REFIMEVE} (Réseau Fibré Métrologique à Vocation Européenne). Ce dernier distribue un signal de référence d'une stabilité exceptionnelle, directement issu des horloges atomiques du LNE-SYRTE à l'Observatoire de Paris. Cette chaîne ininterrompue (\textbf{Horloge Atomique $\rightarrow$ REFIMEVE $\rightarrow$ Peigne de Fréquences $\rightarrow$ Lasers DFB $\rightarrow$ Signal THz}) garantit que la fréquence THz générée est connue avec une exactitude rattachée à la définition de la seconde du Système International.
+
 
 \section{Automatisation et contrôle logiciel}
 
