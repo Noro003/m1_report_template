@@ -34,82 +34,181 @@
 
 
 
-\section{Présentation de l'Institut des Sciences Moléculaires d'Orsay}
+% \section{Présentation de l'Institut des Sciences Moléculaires d'Orsay}
 
-L'Institut des Sciences Moléculaires d'Orsay (ISMO) a été créé en 2010 en association avec le CNRS et l'Université Paris-Saclay, par la fusion de trois laboratoires d'Orsay : le Laboratoire de Photophysique Moléculaire (LPPM), le Laboratoire des Collisions Atomiques et Moléculaires (LCAM) et le Laboratoire d'Interaction du rayonnement X avec la Matière (LIXAM).
+% L'Institut des Sciences Moléculaires d'Orsay (ISMO) a été créé en 2010 en association avec le CNRS et l'Université Paris-Saclay, par la fusion de trois laboratoires d'Orsay : le Laboratoire de Photophysique Moléculaire (LPPM), le Laboratoire des Collisions Atomiques et Moléculaires (LCAM) et le Laboratoire d'Interaction du rayonnement X avec la Matière (LIXAM).
 
-L'ISMO rassemble 81 chercheurs permanents, 47 doctorants et 8 post-doctorants. Ils sont soutenus par l'expertise de 39 personnels techniques et administratifs. L'institut est situé au sein du Centre de Physique Matière-Rayonnement.
+% L'ISMO rassemble 81 chercheurs permanents, 47 doctorants et 8 post-doctorants. Ils sont soutenus par l'expertise de 39 personnels techniques et administratifs. L'institut est situé au sein du Centre de Physique Matière-Rayonnement.
 
-Les six équipes de recherche de l'institut sont :
+% Les six équipes de recherche de l'institut sont :
 
-\begin{itemize}
-    \item \textbf{Dynamiques et interactions : Rayonnement, Atomes, Molécules}, étudiant les processus fondamentaux de l'interaction rayonnement-matière.
-    
-    \item \textbf{Nanomédecine et Biophotonique (NanoBio)}, avec une activité interdisciplinaire à l'interface chimie-physique-biologie.
-    
-    \item \textbf{Nanophysique et Surfaces}, qui étudie les propriétés des atomes, molécules et nano-objets.
-    
-    \item \textbf{Structure et dynamique des systèmes complexes isolés}, caractérisée par une forte interdisciplinarité tournée vers les problèmes chimiques ou biologiques.
-    
-    \item \textbf{Surfaces, Interfaces, Molecules \& 2D Materials}, dont l'activité porte sur l'étude expérimentale des propriétés physico-chimiques des surfaces.
-    
-    \item \textbf{Systèmes Moléculaires, Astrophysique et Environnement}, qui s'intéresse aux processus fondamentaux en chimie-physique pour l'astrophysique et l'environnement.
-\end{itemize}
-
-Ce stage a été effectué au sein de l'équipe \textbf{Systèmes Moléculaires, Astrophysique et Environnement} sous l'encadrement d'Olivier Pirali. Cette équipe développe des approches expérimentales et théoriques pour comprendre les processus moléculaires fondamentaux, via la spectroscopie moléculaire haute résolution et le développement d'instrumentations avancées.
-
-L'ISMO constitue ainsi un environnement de recherche stimulant, où se côtoient des approches expérimentales de pointe et des développements théoriques, offrant un cadre idéal pour des projets à l'interface entre physique, chimie et astrophysique.
-
-\section*{1.1 Contexte scientifique de la spectroscopie THz}
-
-Le domaine spectral s'étendant de 0,1 à 10 térahertz (THz) occupe une position unique et stratégique au sein du spectre électromagnétique. Située à la jonction entre l'électronique hyperfréquence et l'optique infrarouge, cette région a longtemps été qualifiée de « fossé térahertz » en raison des difficultés technologiques à générer et détecter efficacement un rayonnement cohérent. Cependant, les avancées récentes, notamment dans le domaine de la photonique, ont transformé ce fossé en une nouvelle frontière scientifique. L'importance de ce domaine réside dans le fait que les énergies des photons THz coïncident précisément avec de nombreuses excitations de basse énergie qui gouvernent la structure et la dynamique de la matière, comme les transitions rotationnelles des molécules légères, les modes de vibration de grande amplitude (torsions, inversions), ou encore les vibrations de réseau (phonons) dans les solides. La spectroscopie THz offre ainsi un accès direct à des « empreintes digitales » spectrales uniques, permettant l'identification et la caractérisation non ambiguës d'espèces chimiques et de matériaux. Le défi contemporain n'est donc plus simplement de produire un rayonnement THz, mais de le faire avec une précision, une résolution et une traçabilité métrologique extrêmes.
-
-Les impératifs scientifiques qui motivent le développement d'instruments THz de haute précision sont principalement issus de l'astrophysique et de la physique fondamentale. En astrophysique, le rayonnement THz est une sonde irremplaçable de l'Univers « froid », où se déroulent les processus de formation des étoiles et des planètes. L'interprétation rigoureuse des spectres obtenus par les grands observatoires (Herschel, ALMA) dépend de manière critique de la disponibilité de fréquences de repos mesurées en laboratoire avec une très haute exactitude. Parallèlement, en physique fondamentale, la spectroscopie moléculaire à très haute résolution dans le domaine THz constitue un banc d'essai pour sonder les lois de la nature, notamment en recherchant une éventuelle variation temporelle des constantes fondamentales. De tels tests exigent des mesures de laboratoire d'une précision de l'ordre du kilohertz (kHz) et une résolution sub-Doppler pour s'affranchir de l'élargissement thermique des raies.
-
-Face à ces exigences, la génération par photomélange en onde continue (CW) s'impose comme une solution pertinente. Le principe consiste à illuminer un photodétecteur ultrarapide (le photomélangeur) avec le rayonnement combiné de deux lasers continus dont la différence de fréquence, $\nu_{\text{THz}} = |\nu_{1} - \nu_{2}|$, se situe dans le domaine THz. Cette approche photonique présente des avantages décisifs : une résolution spectrale exceptionnelle, limitée uniquement par la largeur de raie des lasers sources ; une large accordabilité continue ; et une détection cohérente qui permet de mesurer l'amplitude et la phase du champ THz, rendant les acquisitions plus rapides et plus robustes en permettant de déterminer la fonction diélectrique complexe des matériaux sans recourir à des pièces mécaniques mobiles \cite{Roggenbuck2010}.
-
-Ce projet s'appuie sur cette technologie en utilisant des composants développés pour les télécommunications optiques à 1,5 µm, notamment les lasers à rétroaction distribuée (DFB) intégrés en boîtiers compacts et fiables \cite{Stanze2010}. Si la plage d'accord d'une seule paire de ces lasers est limitée, une solution de pointe consiste à utiliser un système de trois lasers DFB ou plus. En commutant entre différentes paires, il est aujourd'hui possible d'assurer une couverture spectrale continue sur plusieurs térahertz, comme l'ont démontré des systèmes atteignant 2,75 THz \cite{Deninger2015}.
-
-L'objectif de ce travail est donc de développer un spectromètre THz par photomélange, visant à terme une couverture de 0,3 à 5 THz, dont la performance ultime résidera dans sa chaîne de traçabilité métrologique. Pour atteindre la précision du kHz requise, l'architecture envisagée s'appuiera sur un peigne de fréquences optiques pour mesurer et asservir les fréquences des lasers DFB. Afin de garantir une exactitude absolue, ce peigne sera lui-même stabilisé par une référence de fréquence distribuée par le réseau fibré REFIMEVE, reliant ainsi l'instrument aux étalons primaires. En d'autres termes, ce système ne fait pas que générer des ondes THz : il produit une fréquence connue avec une précision absolue. Ce travail relève donc de la métrologie et peut ainsi permettre de réaliser des expériences scientifiques fondamentales. 
-
-% \section{Objectifs du stage}
-
-% \subsection{Objectif principal}
-
-% L'objectif principal de ce stage est le développement d'un spectromètre THz sub-Doppler par photomélange couvrant la gamme \thzrange. Ce système doit intégrer les dernières avancées en métrologie fréquentielle et automatisation pour atteindre les performances requises par les applications visées.
-
-% \subsection{Objectifs spécifiques}
-
-% \begin{enumerate}
-%     \item \textbf{\objectiveone} \\
-%     Concevoir et assembler un système spectroscopique basé sur le battement de lasers DFB, capable de couvrir la gamme de fréquences THz ciblée avec la résolution requise.
-
-%     \item \textbf{\objectivetwo} \\
-%     Intégrer le système dans l'infrastructure métrologique de l'ISMO, notamment le réseau \REFIMEVE{} et le peigne de fréquence \DFCcore{} pour assurer la traçabilité métrologique.
-
-%     \item \textbf{\objectivethree} \\
-%     Développer les logiciels de contrôle et d'acquisition permettant une utilisation autonome du système par les utilisateurs finaux.
-
-%     \item \textbf{\objectivefour} \\
-%     Concevoir et implémenter des algorithmes d'optimisation des performances, notamment pour le contrôle thermique des lasers.
-
-%     \item \textbf{\objectivefive} \\
-%     Évaluer les performances du système par des mesures spectroscopiques de référence et identifier les limitations pour les développements futurs.
-% \end{enumerate}
-
-% \subsection{Enjeux techniques}
-
-% Les principaux défis techniques à relever incluent :
 % \begin{itemize}
-%     \item \textbf{Stabilité fréquentielle} : maintenir la cohérence spectrale sur de longues durées
-%     \item \textbf{Optimisation de puissance} : maximiser le signal THz généré
-%     \item \textbf{Contrôle thermique} : gérer la dérive des lasers avec la température
-%     \item \textbf{Métrologie} : assurer la traçabilité et la précision des mesures de fréquence
+%     \item \textbf{Dynamiques et interactions : Rayonnement, Atomes, Molécules}, étudiant les processus fondamentaux de l'interaction rayonnement-matière.
+    
+%     \item \textbf{Nanomédecine et Biophotonique (NanoBio)}, avec une activité interdisciplinaire à l'interface chimie-physique-biologie.
+    
+%     \item \textbf{Nanophysique et Surfaces}, qui étudie les propriétés des atomes, molécules et nano-objets.
+    
+%     \item \textbf{Structure et dynamique des systèmes complexes isolés}, caractérisée par une forte interdisciplinarité tournée vers les problèmes chimiques ou biologiques.
+    
+%     \item \textbf{Surfaces, Interfaces, Molecules \& 2D Materials}, dont l'activité porte sur l'étude expérimentale des propriétés physico-chimiques des surfaces.
+    
+%     \item \textbf{Systèmes Moléculaires, Astrophysique et Environnement}, qui s'intéresse aux processus fondamentaux en chimie-physique pour l'astrophysique et l'environnement.
 % \end{itemize}
 
+% Ce stage a été effectué au sein de l'équipe \textbf{Systèmes Moléculaires, Astrophysique et Environnement} sous l'encadrement d'Olivier Pirali. Cette équipe développe des approches expérimentales et théoriques pour comprendre les processus moléculaires fondamentaux, via la spectroscopie moléculaire haute résolution et le développement d'instrumentations avancées.
 
-% \section{Plan du rapport}
+% L'ISMO constitue ainsi un environnement de recherche stimulant, où se côtoient des approches expérimentales de pointe et des développements théoriques, offrant un cadre idéal pour des projets à l'interface entre physique, chimie et astrophysique.
 
-% Ce rapport retrace chronologiquement le développement du spectromètre, depuis la conception théorique jusqu'aux premiers résultats expérimentaux. Chaque chapitre développe un aspect spécifique du projet, en mettant l'accent sur les innovations apportées et les enseignements tirés.
+
+
+% \section*{1.1 Contexte scientifique de la spectroscopie THz}
+
+% Le domaine spectral s'étendant de 0,1 à 10 térahertz (THz) occupe une position unique et stratégique au sein du spectre électromagnétique. Située à la jonction entre l'électronique hyperfréquence et l'optique infrarouge, cette région a longtemps été qualifiée de « fossé térahertz » en raison des difficultés technologiques à générer et détecter efficacement un rayonnement cohérent. Cependant, les avancées récentes, notamment dans le domaine de la photonique, ont transformé ce fossé en une nouvelle frontière scientifique. L'importance de ce domaine réside dans le fait que les énergies des photons THz coïncident précisément avec de nombreuses excitations de basse énergie qui gouvernent la structure et la dynamique de la matière, comme les transitions rotationnelles des molécules légères, les modes de vibration de grande amplitude (torsions, inversions), ou encore les vibrations de réseau (phonons) dans les solides. La spectroscopie THz offre ainsi un accès direct à des « empreintes digitales » spectrales uniques, permettant l'identification et la caractérisation non ambiguës d'espèces chimiques et de matériaux. Le défi contemporain n'est donc plus simplement de produire un rayonnement THz, mais de le faire avec une précision, une résolution et une traçabilité métrologique extrêmes.
+
+% Les impératifs scientifiques qui motivent le développement d'instruments THz de haute précision sont principalement issus de l'astrophysique et de la physique fondamentale. En astrophysique, le rayonnement THz est une sonde irremplaçable de l'Univers « froid », où se déroulent les processus de formation des étoiles et des planètes. L'interprétation rigoureuse des spectres obtenus par les grands observatoires (Herschel, ALMA) dépend de manière critique de la disponibilité de fréquences de repos mesurées en laboratoire avec une très haute exactitude. Parallèlement, en physique fondamentale, la spectroscopie moléculaire à très haute résolution dans le domaine THz constitue un banc d'essai pour sonder les lois de la nature, notamment en recherchant une éventuelle variation temporelle des constantes fondamentales. De tels tests exigent des mesures de laboratoire d'une précision de l'ordre du kilohertz (kHz) et une résolution sub-Doppler pour s'affranchir de l'élargissement thermique des raies.
+
+% Face à ces exigences, la génération par photomélange en onde continue (CW) s'impose comme une solution pertinente. Le principe consiste à illuminer un photodétecteur ultrarapide (le photomélangeur) avec le rayonnement combiné de deux lasers continus dont la différence de fréquence, $\nu_{\text{THz}} = |\nu_{1} - \nu_{2}|$, se situe dans le domaine THz. Cette approche photonique présente des avantages décisifs : une résolution spectrale exceptionnelle, limitée uniquement par la largeur de raie des lasers sources ; une large accordabilité continue ; et une détection cohérente qui permet de mesurer l'amplitude et la phase du champ THz, rendant les acquisitions plus rapides et plus robustes en permettant de déterminer la fonction diélectrique complexe des matériaux sans recourir à des pièces mécaniques mobiles \cite{Roggenbuck2010}.
+
+% Ce projet s'appuie sur cette technologie en utilisant des composants développés pour les télécommunications optiques à 1,5 µm, notamment les lasers à rétroaction distribuée (DFB) intégrés en boîtiers compacts et fiables \cite{Stanze2010}. Si la plage d'accord d'une seule paire de ces lasers est limitée, une solution de pointe consiste à utiliser un système de trois lasers DFB ou plus. En commutant entre différentes paires, il est aujourd'hui possible d'assurer une couverture spectrale continue sur plusieurs térahertz, comme l'ont démontré des systèmes atteignant 2,75 THz \cite{Deninger2015}.
+
+% L'objectif de ce travail est donc de développer un spectromètre THz par photomélange, visant à terme une couverture de 0,3 à 5 THz, dont la performance ultime résidera dans sa chaîne de traçabilité métrologique. Pour atteindre la précision du kHz requise, l'architecture envisagée s'appuiera sur un peigne de fréquences optiques pour mesurer et asservir les fréquences des lasers DFB. Afin de garantir une exactitude absolue, ce peigne sera lui-même stabilisé par une référence de fréquence distribuée par le réseau fibré REFIMEVE, reliant ainsi l'instrument aux étalons primaires. En d'autres termes, ce système ne fait pas que générer des ondes THz : il produit une fréquence connue avec une précision absolue. Ce travail relève donc de la métrologie et peut ainsi permettre de réaliser des expériences scientifiques fondamentales. 
+
+% % \section{Objectifs du stage}
+
+% % \subsection{Objectif principal}
+
+% % L'objectif principal de ce stage est le développement d'un spectromètre THz sub-Doppler par photomélange couvrant la gamme \thzrange. Ce système doit intégrer les dernières avancées en métrologie fréquentielle et automatisation pour atteindre les performances requises par les applications visées.
+
+% % \subsection{Objectifs spécifiques}
+
+% % \begin{enumerate}
+% %     \item \textbf{\objectiveone} \\
+% %     Concevoir et assembler un système spectroscopique basé sur le battement de lasers DFB, capable de couvrir la gamme de fréquences THz ciblée avec la résolution requise.
+
+% %     \item \textbf{\objectivetwo} \\
+% %     Intégrer le système dans l'infrastructure métrologique de l'ISMO, notamment le réseau \REFIMEVE{} et le peigne de fréquence \DFCcore{} pour assurer la traçabilité métrologique.
+
+% %     \item \textbf{\objectivethree} \\
+% %     Développer les logiciels de contrôle et d'acquisition permettant une utilisation autonome du système par les utilisateurs finaux.
+
+% %     \item \textbf{\objectivefour} \\
+% %     Concevoir et implémenter des algorithmes d'optimisation des performances, notamment pour le contrôle thermique des lasers.
+
+% %     \item \textbf{\objectivefive} \\
+% %     Évaluer les performances du système par des mesures spectroscopiques de référence et identifier les limitations pour les développements futurs.
+% % \end{enumerate}
+
+% % \subsection{Enjeux techniques}
+
+% % Les principaux défis techniques à relever incluent :
+% % \begin{itemize}
+% %     \item \textbf{Stabilité fréquentielle} : maintenir la cohérence spectrale sur de longues durées
+% %     \item \textbf{Optimisation de puissance} : maximiser le signal THz généré
+% %     \item \textbf{Contrôle thermique} : gérer la dérive des lasers avec la température
+% %     \item \textbf{Métrologie} : assurer la traçabilité et la précision des mesures de fréquence
+% % \end{itemize}
+
+
+% % \section{Plan du rapport}
+
+% % Ce rapport retrace chronologiquement le développement du spectromètre, depuis la conception théorique jusqu'aux premiers résultats expérimentaux. Chaque chapitre développe un aspect spécifique du projet, en mettant l'accent sur les innovations apportées et les enseignements tirés.
+
+\section{Présentation de l'Institut des Sciences Moléculaires d'Orsay}
+
+L'Institut des Sciences Moléculaires d'Orsay (ISMO) a été créé en 2010. Il résulte de la fusion de trois laboratoires d'Orsay : le Laboratoire de Photophysique Moléculaire (LPPM), le Laboratoire des Collisions Atomiques et Moléculaires (LCAM) et le Laboratoire d'Interaction du rayonnement X avec la Matière (LIXAM). L'ISMO est une unité mixte du CNRS et de l'Université Paris-Saclay.
+
+L'institut emploie 81 chercheurs permanents, 47 doctorants et 8 post-doctorants. Une équipe de 39 personnels techniques et administratifs les soutient dans leurs activités. L'institut est situé dans le Centre de Physique Matière-Rayonnement d'Orsay.
+
+L'ISMO comprend six équipes de recherche :
+
+\begin{itemize}
+    \item \textbf{Dynamiques et interactions : Rayonnement, Atomes, Molécules} -- Cette équipe étudie comment la lumière interagit avec la matière à l'échelle atomique et moléculaire.
+    
+    \item \textbf{Nanomédecine et Biophotonique (NanoBio)} -- Une équipe interdisciplinaire qui travaille à l'interface entre la chimie, la physique et la biologie.
+    
+    \item \textbf{Nanophysique et Surfaces} -- Elle s'intéresse aux propriétés des atomes, molécules et nano-objets.
+    
+    \item \textbf{Structure et dynamique des systèmes complexes isolés} -- Cette équipe aborde des problèmes chimiques et biologiques avec une approche très interdisciplinaire.
+    
+    \item \textbf{Surfaces, Interfaces, Molecules \& 2D Materials} -- Elle étudie expérimentalement les propriétés physico-chimiques des surfaces.
+    
+    \item \textbf{Systèmes Moléculaires, Astrophysique et Environnement} -- Cette équipe s'intéresse aux processus fondamentaux en chimie-physique pour l'astrophysique et l'environnement.
+\end{itemize}
+
+Mon stage s'est déroulé dans cette dernière équipe, sous l'encadrement d'Olivier Pirali. Cette équipe développe des méthodes expérimentales et théoriques pour comprendre les processus moléculaires. Elle se spécialise dans la spectroscopie moléculaire haute résolution et le développement d'instruments scientifiques avancés.
+
+L'ISMO offre un environnement de recherche stimulant où se rencontrent des approches expérimentales de pointe et des développements théoriques. C'est un cadre idéal pour des projets situés à l'interface entre physique, chimie et astrophysique.
+
+\section{Contexte scientifique de la spectroscopie THz}
+
+\subsection{Le domaine térahertz}
+
+Le domaine térahertz (THz) couvre les fréquences de 0,1 à \SI{10}{\THz}. Cette région du spectre électromagnétique se situe entre les micro-ondes et l'infrarouge. Pendant longtemps, nous l'avons appelée le « fossé térahertz » car il était très difficile de générer et détecter efficacement ce type de rayonnement.
+
+L'importance de ce domaine réside dans le fait que les photons THz ont des énergies qui correspondent à de nombreux phénomènes de basse énergie dans la matière :
+\begin{itemize}
+    \item Les transitions rotationnelles des molécules légères
+    \item Les mouvements de vibration de grande amplitude (torsions, inversions)
+    \item Les vibrations de réseau dans les solides (phonons)
+\end{itemize}
+
+La spectroscopie THz permet d'obtenir des « empreintes digitales » spectrales uniques des matériaux et des molécules, permettant leur identification et caractérisation précises.
+
+\subsection{Intérêts scientifiques des instruments THz de haute précision}
+
+Deux domaines scientifiques motivent particulièrement le développement d'instruments THz de haute précision.
+
+\textbf{En astrophysique}, le rayonnement THz constitue une sonde essentielle pour étudier l'Univers « froid », où se forment les étoiles et les planètes. Les grands observatoires comme Herschel ou ALMA détectent ce rayonnement dans l'espace. L'interprétation rigoureuse de ces observations nécessite des mesures de laboratoire très précises des fréquences de référence.
+
+\textbf{En physique fondamentale}, la spectroscopie moléculaire THz peut servir à tester les lois de la nature. Elle permet notamment de rechercher une éventuelle variation temporelle des constantes physiques fondamentales. Ces tests demandent une précision de l'ordre du kilohertz (\SI{}{\kilo\hertz}) et une résolution très élevée.
+
+\subsection{La génération par photomélange}
+
+Pour répondre à ces exigences, nous utilisons la technique de photomélange en onde continue. Le principe consiste à mélanger la lumière de deux lasers continus dans un composant spécialisé appelé photomélangeur. La différence entre les fréquences des deux lasers donne directement la fréquence THz désirée :
+
+\begin{equation}
+\nu_{\text{THz}} = |\nu_{1} - \nu_{2}|
+\end{equation}
+
+Cette approche photonique présente plusieurs avantages :
+\begin{itemize}
+    \item Haute résolution spectrale exceptionnelle, limitée uniquement par la largeur de raie des lasers sources
+    \item Large accordabilité continue
+    \item Détection cohérente permettant de mesurer l'amplitude et la phase du champ THz
+\end{itemize}
+
+\subsection{Les lasers DFB dans les télécommunications optiques}
+
+Notre système utilise des lasers à rétroaction distribuée (DFB) développés initialement pour les télécommunications optiques à \SI{1,5}{\micro\meter}. Ces lasers présentent l'avantage d'être compacts, fiables et disponibles commercialement.
+
+Une seule paire de lasers DFB possède une plage d'accord limitée. Pour couvrir un large domaine spectral, il est possible d'utiliser plusieurs paires de lasers et de basculer entre elles. Des systèmes récents atteignent ainsi une couverture continue de plusieurs térahertz.
+
+\section{Objectifs de ce stage}
+
+L'objectif principal de ce stage est de développer un spectromètre THz par photomélange visant à couvrir la gamme 0,3 à \SI{5}{\THz}. Ce n'est pas seulement un générateur THz : c'est un instrument de métrologie.
+
+\subsection{La chaîne de traçabilité métrologique}
+
+Pour atteindre la précision du \SI{}{\kilo\hertz} nécessaire, l'architecture développée s'appuie sur :
+
+\begin{enumerate}
+    \item \textbf{Un peigne de fréquences optiques} : Il sert de référence pour mesurer et contrôler les fréquences des lasers DFB
+    \item \textbf{Le réseau REFIMEVE (Réseau Fibré Métrologique à Vocation Européenne)} : Ce réseau fibré distribue une référence de fréquence ultra-stable, reliant notre instrument aux étalons primaires nationaux
+\end{enumerate}
+
+Le système ne produit pas seulement des ondes THz : il génère une fréquence connue avec une précision absolue. Cette traçabilité métrologique est essentielle pour les applications en astrophysique et en physique fondamentale.
+
+\subsection{Enjeux techniques}
+
+Ce travail s'inscrit dans un projet visant à développer une nouvelle génération d'instruments THz pour la spectroscopie de précision. Les défis techniques incluent :
+\begin{itemize}
+    \item L'intégration des différents composants (lasers, peigne, détection)
+    \item L'optimisation de la stabilité et de la précision du système
+    \item La caractérisation des performances obtenues
+    \item Les premières mesures spectroscopiques sur des molécules d'intérêt
+\end{itemize}
+
+Ce stage constitue les premières étapes d'un projet qui pourra être poursuivi en thèse, avec pour objectif final de réaliser des mesures spectroscopiques dans le domaine THz avec une précision inédite.
 
 % Le \cref{chap:protocoles} détaille l'architecture système et les protocoles expérimentaux développés. Le \cref{chap:resultats} présente les performances obtenues et les compare aux spécifications. Le \cref{chap:analyse} replace les résultats dans leur contexte scientifique et prospectif. Enfin, le \cref{chap:conclusion} synthétise les acquis du stage et leurs implications pour la suite du projet.
